@@ -3,877 +3,553 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HERIO AI – Marketing Digital Premium · Ibiza 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<title>HERIO AI – Marketing Digital · Ibiza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --white: #FAFAF8;
-    --rose: #E8B4B8;
-    --rose-deep: #C47C82;
-    --rose-pale: #F5E6E8;
-    --blue: #4A90B8;
-    --blue-light: #A8D4E8;
-    --blue-deep: #1A4B6E;
-    --sand: #F2E8D8;
-    --gold: #C9A84C;
-    --dark: #1C1C1E;
-    --gray: #8C8C8C;
-    --glass: rgba(255,255,255,0.72);
+    --ivory: #F5F0EA;
+    --sand: #E8DDD0;
+    --pearl: #EDE8E1;
+    --rose: #C9A4A0;
+    --rose-light: #E8C5C0;
+    --rose-deep: #B08880;
+    --blue: #2B4A6B;
+    --blue-mid: #3D6A94;
+    --blue-light: #7AA3C4;
+    --blue-sky: #A8C8E0;
+    --teal: #4A8FA8;
+    --gold: #C4A875;
+    --gold-light: #D4BC95;
+    --charcoal: #2C2C2C;
+    --dark: #1A1A1A;
+    --glass: rgba(250,250,248,0.85);
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--white);
-    color: var(--dark);
-    overflow-x: hidden;
-    cursor: none;
-  }
-
-  /* Custom cursor */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--rose-deep);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transition: transform 0.15s ease;
-    mix-blend-mode: multiply;
-  }
-  .cursor-ring {
-    width: 40px; height: 40px;
-    border: 1px solid var(--rose-deep);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9998;
-    transition: transform 0.4s ease, opacity 0.3s;
-    opacity: 0.5;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Jost',sans-serif; background:var(--white); color:var(--charcoal); overflow-x:hidden; }
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:var(--ivory); }
+  ::-webkit-scrollbar-thumb { background:var(--blue-light); border-radius:2px; }
 
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 22px 60px;
-    display: flex; align-items: center; justify-content: space-between;
-    backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(250,250,248,0.85);
-    border-bottom: 1px solid rgba(232,180,184,0.25);
-    transition: all 0.4s ease;
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:0 60px; height:80px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--glass); backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(43,74,107,0.1);
+    transition:all 0.4s;
   }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem; font-weight: 600; letter-spacing: 0.12em;
-    color: var(--dark); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo-dot { width: 8px; height: 8px; background: var(--rose-deep); border-radius: 50%; display: inline-block; }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--dark); text-decoration: none; font-weight: 400;
-    position: relative; padding-bottom: 4px;
-    transition: color 0.3s;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
-    background: var(--rose-deep); transition: width 0.3s ease;
-  }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-links a:hover { color: var(--rose-deep); }
-  .nav-cta {
-    background: var(--dark); color: var(--white);
-    padding: 11px 28px; font-size: 0.65rem; letter-spacing: 0.22em;
-    text-transform: uppercase; text-decoration: none; border: none;
-    cursor: none; transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif; font-weight: 500;
-  }
-  .nav-cta:hover { background: var(--rose-deep); }
+  nav.scrolled { height:65px; background:rgba(250,250,248,0.97); box-shadow:0 4px 40px rgba(43,74,107,0.08); }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; letter-spacing:0.15em; color:var(--blue); text-decoration:none; }
+  .nav-logo span { color:var(--rose-deep); font-style:italic; }
+  .nav-links { display:flex; gap:40px; list-style:none; }
+  .nav-links a { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--charcoal); text-decoration:none; font-weight:400; position:relative; padding-bottom:4px; transition:color 0.3s; }
+  .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--rose-deep); transition:width 0.3s; }
+  .nav-links a:hover { color:var(--blue); }
+  .nav-links a:hover::after { width:100%; }
+  .nav-cta { background:var(--blue) !important; color:var(--white) !important; padding:10px 24px !important; border-radius:2px; transition:background 0.3s !important; }
+  .nav-cta:hover { background:var(--blue-mid) !important; }
+  .nav-cta::after { display:none !important; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1100; }
+  .hamburger span { display:block; width:24px; height:1.5px; background:var(--charcoal); transition:all 0.3s; }
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    position: relative; overflow: hidden;
-    display: flex; align-items: center;
-  }
+  #hero { height:100vh; min-height:700px; position:relative; display:flex; align-items:center; overflow:hidden; }
   .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      linear-gradient(135deg, rgba(250,250,248,0.92) 0%, rgba(245,230,232,0.75) 40%, rgba(168,212,232,0.45) 100%),
-      url('https://images.unsplash.com/photo-1535189043414-47a3c49a0bed?w=1800&q=80') center/cover no-repeat;
+    position:absolute; inset:0;
+    background:linear-gradient(160deg,rgba(43,74,107,0.88) 0%,rgba(74,143,168,0.65) 40%,rgba(201,164,160,0.5) 80%,rgba(196,168,117,0.4) 100%),
+    url('https://i.imgur.com/bLweH0F.jpeg') center/cover no-repeat;
   }
-  .hero-bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(74,144,184,0.12) 0%, transparent 60%);
-  }
-  .hero-content {
-    position: relative; z-index: 2;
-    padding: 0 60px; max-width: 820px;
-    animation: heroFadeUp 1.2s cubic-bezier(0.16,1,0.3,1) both;
-    margin-top: 60px;
-  }
-  @keyframes heroFadeUp {
-    from { opacity:0; transform: translateY(50px); }
-    to { opacity:1; transform: translateY(0); }
-  }
-  .hero-season {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
-    color: var(--rose-deep); margin-bottom: 28px;
-    font-weight: 500;
-  }
-  .hero-season::before { content: ''; width: 32px; height: 1px; background: var(--rose-deep); }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.4rem, 7vw, 6.5rem);
-    font-weight: 300; line-height: 1.05;
-    color: var(--dark); margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .hero-title em { font-style: italic; color: var(--rose-deep); }
-  .hero-title .line-blue { color: var(--blue-deep); }
-  .hero-sub {
-    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--gray); margin-bottom: 36px; font-weight: 300;
-  }
-  .hero-desc {
-    font-size: 1rem; line-height: 1.85; color: var(--dark);
-    max-width: 480px; margin-bottom: 52px; font-weight: 300;
-    opacity: 0.8;
-  }
-  .hero-btns { display: flex; gap: 18px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--dark); color: var(--white);
-    padding: 16px 40px; font-size: 0.68rem; letter-spacing: 0.22em;
-    text-transform: uppercase; text-decoration: none;
-    font-family: 'Montserrat', sans-serif; font-weight: 500;
-    display: inline-block; transition: all 0.3s ease;
-    cursor: none;
-  }
-  .btn-primary:hover { background: var(--rose-deep); transform: translateY(-2px); }
-  .btn-outline {
-    border: 1px solid var(--dark); color: var(--dark);
-    padding: 16px 40px; font-size: 0.68rem; letter-spacing: 0.22em;
-    text-transform: uppercase; text-decoration: none;
-    font-family: 'Montserrat', sans-serif; font-weight: 400;
-    display: inline-block; transition: all 0.3s ease;
-    cursor: none; background: transparent;
-  }
-  .btn-outline:hover { background: var(--dark); color: var(--white); transform: translateY(-2px); }
+  .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,transparent 50%,rgba(250,250,248,0.95) 100%); }
+  .orb { position:absolute; border-radius:50%; animation:floatOrb 8s ease-in-out infinite; pointer-events:none; }
+  .orb1 { width:400px; height:400px; top:-100px; right:-100px; background:radial-gradient(circle,rgba(74,143,168,0.25),transparent 70%); }
+  .orb2 { width:300px; height:300px; bottom:100px; left:-80px; background:radial-gradient(circle,rgba(201,164,160,0.3),transparent 70%); animation-delay:3s; }
+  @keyframes floatOrb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+  .hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:80px 60px 0; }
+  .hero-eyebrow { font-size:11px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-light); font-weight:400; margin-bottom:24px; opacity:0; animation:fadeUp 1s ease 0.3s forwards; display:flex; align-items:center; gap:16px; }
+  .hero-eyebrow::before { content:''; width:40px; height:1px; background:var(--gold-light); }
+  .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(52px,7vw,90px); font-weight:300; line-height:1.05; color:var(--white); opacity:0; animation:fadeUp 1s ease 0.5s forwards; }
+  .hero-title em { font-style:italic; color:#FFB5B0; text-shadow:0 0 30px rgba(255,100,80,0.8); }
+  .hero-title .blue-accent { color:var(--blue-sky); }
+  .hero-sub { font-size:16px; font-weight:200; color:rgba(250,250,248,0.85); max-width:520px; line-height:1.8; margin-top:28px; opacity:0; animation:fadeUp 1s ease 0.7s forwards; }
+  .hero-buttons { display:flex; gap:16px; margin-top:48px; flex-wrap:wrap; opacity:0; animation:fadeUp 1s ease 0.9s forwards; }
+  .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--white); color:var(--blue); padding:16px 36px; border-radius:2px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-family:'Jost',sans-serif; font-weight:500; text-decoration:none; border:none; cursor:pointer; transition:all 0.3s; white-space:nowrap; }
+  .btn-primary:hover { background:var(--ivory); transform:translateY(-2px); box-shadow:0 12px 40px rgba(0,0,0,0.15); }
+  .btn-secondary { display:inline-flex; align-items:center; gap:10px; background:transparent; color:var(--white); padding:15px 36px; border-radius:2px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-family:'Jost',sans-serif; font-weight:400; text-decoration:none; border:1px solid rgba(250,250,248,0.5); cursor:pointer; transition:all 0.3s; white-space:nowrap; }
+  .btn-secondary:hover { border-color:var(--white); background:rgba(250,250,248,0.1); transform:translateY(-2px); }
+  .hero-stats { display:flex; gap:60px; margin-top:80px; opacity:0; animation:fadeUp 1s ease 1.1s forwards; flex-wrap:wrap; }
+  .stat { border-left:1px solid rgba(250,250,248,0.3); padding-left:24px; }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:var(--white); line-height:1; }
+  .stat-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(250,250,248,0.6); margin-top:6px; }
+  .scroll-indicator { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:fadeIn 1s ease 1.5s forwards; }
+  .scroll-indicator span { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(250,250,248,0.5); }
+  .scroll-line { width:1px; height:60px; background:linear-gradient(to bottom,rgba(250,250,248,0.5),transparent); animation:scrollDown 2s ease-in-out infinite; }
+  @keyframes scrollDown { 0%,100%{opacity:0.3;transform:scaleY(0.7)} 50%{opacity:1;transform:scaleY(1)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-  /* Floating hero badge */
-  .hero-badge {
-    position: absolute; right: 80px; bottom: 100px; z-index: 3;
-    width: 140px; height: 140px;
-    border-radius: 50%; border: 1px solid var(--rose);
-    background: var(--glass); backdrop-filter: blur(10px);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; animation: rotate 20s linear infinite;
-  }
-  @keyframes rotate {
-    to { transform: rotate(360deg); }
-  }
-  .badge-inner {
-    animation: rotateReverse 20s linear infinite;
-  }
-  @keyframes rotateReverse {
-    to { transform: rotate(-360deg); }
-  }
-  .badge-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 600; color: var(--rose-deep);
-  }
-  .badge-text {
-    font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gray); line-height: 1.6;
-  }
+  /* SECTIONS */
+  .section-wrap { padding:120px 60px; max-width:1200px; margin:0 auto; }
+  .section-label { font-size:10px; letter-spacing:0.4em; text-transform:uppercase; color:var(--rose-deep); font-weight:400; margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+  .section-label::before { content:''; width:30px; height:1px; background:var(--rose-deep); }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,4.5vw,58px); font-weight:300; line-height:1.15; color:var(--blue); }
+  .section-title em { font-style:italic; color:var(--rose-deep); }
 
-  /* SCROLL INDICATOR */
-  .scroll-ind {
-    position: absolute; bottom: 40px; left: 60px; z-index: 3;
-    display: flex; align-items: center; gap: 14px;
-    animation: heroFadeUp 1.8s 0.5s cubic-bezier(0.16,1,0.3,1) both;
-  }
-  .scroll-line {
-    width: 1px; height: 60px; background: var(--rose-deep); opacity: 0.6;
-    animation: scrollLine 2s ease-in-out infinite;
-    transform-origin: top;
-  }
-  @keyframes scrollLine {
-    0%,100% { height: 60px; opacity: 0.6; }
-    50% { height: 30px; opacity: 1; }
-  }
-  .scroll-text {
-    font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gray); writing-mode: vertical-rl;
-  }
-
-  /* SECTION WRAPPER */
-  section { padding: 120px 60px; }
-  .section-label {
-    font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase;
-    color: var(--rose-deep); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--rose-deep); }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 4vw, 3.8rem);
-    font-weight: 300; line-height: 1.15; color: var(--dark);
-    margin-bottom: 24px;
-  }
-  .section-title em { font-style: italic; color: var(--blue-deep); }
-
-  /* STATS BAND */
-  .stats-band {
-    background: var(--dark); padding: 60px;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  }
-  .stat-item {
-    text-align: center; padding: 20px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem; font-weight: 300; color: var(--rose);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: rgba(255,255,255,0.45); margin-top: 10px;
-  }
+  /* ABOUT */
+  #about { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center; padding:120px 60px; max-width:1200px; margin:0 auto; }
+  .about-img-wrap { position:relative; }
+  .about-img-main { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:4px; }
+  .about-img-accent { position:absolute; bottom:-40px; right:-40px; width:55%; aspect-ratio:1; object-fit:cover; border-radius:4px; border:6px solid var(--white); box-shadow:0 20px 60px rgba(43,74,107,0.15); }
+  .about-badge { position:absolute; top:30px; left:-20px; background:var(--blue); color:var(--white); padding:20px 24px; border-radius:2px; box-shadow:0 10px 40px rgba(43,74,107,0.2); }
+  .about-badge-num { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300; line-height:1; }
+  .about-badge-text { font-size:10px; letter-spacing:0.15em; opacity:0.8; margin-top:4px; }
+  .about-desc { font-size:15px; font-weight:300; line-height:1.9; color:#555; margin-top:32px; margin-bottom:40px; }
+  .about-features { list-style:none; display:flex; flex-direction:column; gap:16px; margin-bottom:48px; }
+  .about-features li { display:flex; align-items:center; gap:14px; font-size:13px; font-weight:300; color:var(--charcoal); }
+  .about-features li::before { content:'✦'; color:var(--gold); font-size:10px; }
 
   /* SERVICES */
-  .services-section { background: var(--white); }
-  .services-intro {
-    max-width: 580px; margin-bottom: 80px;
-  }
-  .services-intro p {
-    font-size: 1rem; line-height: 1.9; color: var(--gray); font-weight: 300;
-  }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-  }
-  .service-card {
-    padding: 52px 40px; background: var(--white);
-    border: 1px solid rgba(232,180,184,0.2);
-    position: relative; overflow: hidden;
-    transition: all 0.4s ease;
-    group: true;
-  }
-  .service-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--rose-pale), var(--blue-light));
-    opacity: 0; transition: opacity 0.4s ease;
-  }
-  .service-card:hover::before { opacity: 0.25; }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.08); }
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; font-weight: 300; color: rgba(232,180,184,0.4);
-    position: absolute; top: 20px; right: 30px; line-height: 1;
-    transition: color 0.4s;
-  }
-  .service-card:hover .service-num { color: var(--rose); }
-  .service-icon { font-size: 2rem; margin-bottom: 24px; position: relative; z-index: 1; }
-  .service-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 400; margin-bottom: 14px;
-    color: var(--dark); position: relative; z-index: 1;
-  }
-  .service-desc {
-    font-size: 0.8rem; line-height: 1.8; color: var(--gray);
-    font-weight: 300; position: relative; z-index: 1;
-  }
-  .service-tag {
-    display: inline-block; margin-top: 22px;
-    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--rose-deep); border-bottom: 1px solid var(--rose);
-    padding-bottom: 2px; position: relative; z-index: 1;
-  }
+  #services { background:var(--ivory); padding:120px 60px; }
+  .services-inner { max-width:1200px; margin:0 auto; }
+  .services-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:72px; flex-wrap:wrap; gap:32px; }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .service-card { background:var(--white); padding:52px 44px; position:relative; overflow:hidden; transition:all 0.4s; cursor:default; }
+  .service-card::before { content:''; position:absolute; bottom:0; left:0; width:100%; height:3px; background:linear-gradient(90deg,var(--blue),var(--teal),var(--rose)); transform:scaleX(0); transition:transform 0.4s; transform-origin:left; }
+  .service-card:hover::before { transform:scaleX(1); }
+  .service-card:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(43,74,107,0.1); z-index:1; }
+  .service-icon { font-size:32px; margin-bottom:28px; display:block; transition:transform 0.3s; }
+  .service-card:hover .service-icon { transform:scale(1.15); }
+  .service-num { font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:300; color:var(--sand); position:absolute; top:20px; right:30px; line-height:1; }
+  .service-name { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--blue); margin-bottom:16px; }
+  .service-desc { font-size:13px; font-weight:300; line-height:1.8; color:#666; margin-bottom:28px; }
+  .service-link { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-deep); text-decoration:none; font-weight:500; display:flex; align-items:center; gap:8px; transition:gap 0.3s; }
+  .service-link:hover { gap:14px; }
 
-  /* IBIZA FEATURE */
-  .ibiza-section {
-    background: var(--dark);
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    padding: 0;
-  }
-  .ibiza-img {
-    height: 700px;
-    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80') center/cover;
-    position: relative;
-  }
-  .ibiza-img::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to right, transparent, var(--dark));
-  }
-  .ibiza-content {
-    padding: 100px 80px 100px 60px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .ibiza-content .section-label { color: var(--rose); }
-  .ibiza-content .section-label::before { background: var(--rose); }
-  .ibiza-content .section-title { color: var(--white); }
-  .ibiza-content .section-title em { color: var(--rose); }
-  .ibiza-list { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
-  .ibiza-list li {
-    display: flex; align-items: flex-start; gap: 18px;
-    font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.7;
-  }
-  .ibiza-list li::before {
-    content: '✦'; color: var(--rose); font-size: 0.7rem; margin-top: 3px; flex-shrink: 0;
-  }
-
-  /* PORTFOLIO STRIP */
-  .portfolio-section { background: var(--sand); }
-  .portfolio-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto; gap: 16px; margin-top: 70px;
-  }
-  .portfolio-item {
-    overflow: hidden; position: relative; cursor: none;
-  }
-  .portfolio-item img {
-    width: 100%; height: 320px; object-fit: cover;
-    transition: transform 0.6s ease; display: block;
-    filter: saturate(0.9);
-  }
-  .portfolio-item:hover img { transform: scale(1.06); filter: saturate(1); }
-  .portfolio-item.tall img { height: 656px; }
-  .portfolio-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(26,75,110,0.7) 0%, transparent 60%);
-    opacity: 0; transition: opacity 0.4s;
-    display: flex; align-items: flex-end; padding: 28px;
-  }
-  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-  .portfolio-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; color: white; font-weight: 300; font-style: italic;
-  }
+  /* GALLERY */
+  #galeria { padding:120px 0; }
+  .gallery-header { text-align:center; padding:0 60px; margin-bottom:64px; }
+  .gallery-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:4px; padding:0 4px; }
+  .gallery-item { overflow:hidden; cursor:pointer; position:relative; }
+  .gallery-item:nth-child(1) { grid-column:1/2; grid-row:1/3; }
+  .gallery-item img { width:100%; height:100%; object-fit:cover; min-height:280px; transition:transform 0.6s ease,filter 0.4s; filter:brightness(0.92) saturate(1.05); }
+  .gallery-item:hover img { transform:scale(1.05); filter:brightness(1) saturate(1.15); }
+  .gallery-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(43,74,107,0.7) 0%,transparent 60%); opacity:0; transition:opacity 0.4s; display:flex; align-items:flex-end; padding:24px; }
+  .gallery-item:hover .gallery-overlay { opacity:1; }
+  .gallery-overlay-text { color:var(--white); font-size:12px; letter-spacing:0.15em; text-transform:uppercase; }
 
   /* PROCESS */
-  .process-section { background: var(--white); }
-  .process-steps {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 0; margin-top: 80px; border-top: 1px solid rgba(232,180,184,0.3);
-  }
-  .process-step { padding: 50px 36px; border-right: 1px solid rgba(232,180,184,0.3); }
-  .process-step:last-child { border-right: none; }
-  .step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; font-weight: 300;
-    color: rgba(232,180,184,0.35); line-height: 1; margin-bottom: 24px;
-  }
-  .step-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 400; color: var(--dark); margin-bottom: 14px;
-  }
-  .step-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.8; font-weight: 300; }
+  #proceso { background:linear-gradient(135deg,var(--blue) 0%,var(--blue-mid) 50%,var(--teal) 100%); padding:120px 60px; position:relative; overflow:hidden; }
+  .proceso-inner { max-width:1200px; margin:0 auto; }
+  .proceso-inner .section-label { color:var(--blue-sky); }
+  .proceso-inner .section-label::before { background:var(--blue-sky); }
+  .proceso-inner .section-title { color:var(--white); }
+  .proceso-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:72px; }
+  .step { background:rgba(255,255,255,0.06); padding:44px 32px; border-top:1px solid rgba(255,255,255,0.15); transition:background 0.3s; }
+  .step:hover { background:rgba(255,255,255,0.1); }
+  .step-num { font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300; color:rgba(255,255,255,0.12); line-height:1; margin-bottom:20px; }
+  .step-icon { font-size:28px; margin-bottom:16px; display:block; }
+  .step-name { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--white); font-weight:400; margin-bottom:12px; }
+  .step-desc { font-size:12px; font-weight:200; color:rgba(255,255,255,0.65); line-height:1.8; }
+  .step-time { margin-top:24px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-light); }
 
-  /* TESTIMONIALS */
-  .testimonials-section { background: var(--rose-pale); padding: 120px 60px; }
-  .testimonials-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 24px; margin-top: 70px;
-  }
-  .testimonial-card {
-    background: var(--white); padding: 44px 36px;
-    border-top: 3px solid var(--rose);
-  }
-  .testimonial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-style: italic; line-height: 1.75;
-    color: var(--dark); margin-bottom: 28px;
-  }
-  .testimonial-author { display: flex; align-items: center; gap: 14px; }
-  .author-avatar {
-    width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--rose);
-  }
-  .author-name { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-  .author-role { font-size: 0.65rem; color: var(--gray); margin-top: 3px; }
-  .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 18px; letter-spacing: 3px; }
+  /* REVIEWS */
+  #resenas { background:var(--pearl); padding:120px 60px; }
+  .resenas-inner { max-width:1200px; margin:0 auto; }
+  .resenas-header { text-align:center; margin-bottom:72px; }
+  .resenas-header .section-label { justify-content:center; }
+  .resenas-header .section-label::before { display:none; }
+  .reviews-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .review-card { background:var(--white); padding:44px 36px; border-radius:2px; box-shadow:0 2px 20px rgba(43,74,107,0.05); transition:transform 0.3s,box-shadow 0.3s; }
+  .review-card:hover { transform:translateY(-6px); box-shadow:0 16px 50px rgba(43,74,107,0.1); }
+  .review-quote { font-family:'Cormorant Garamond',serif; font-size:72px; color:var(--sand); line-height:0.5; margin-bottom:24px; display:block; }
+  .review-text { font-size:14px; font-weight:300; line-height:1.85; color:#555; margin-bottom:32px; font-style:italic; }
+  .review-stars { color:var(--gold); font-size:14px; letter-spacing:3px; margin-bottom:20px; }
+  .reviewer { display:flex; align-items:center; gap:14px; padding-top:24px; border-top:1px solid var(--sand); }
+  .reviewer-avatar { width:44px; height:44px; border-radius:50%; background:var(--blue-light); display:flex; align-items:center; justify-content:center; color:white; font-weight:600; font-size:16px; flex-shrink:0; }
+  .reviewer-name { font-size:13px; font-weight:500; color:var(--blue); }
+  .reviewer-role { font-size:11px; font-weight:300; color:#999; margin-top:2px; }
 
   /* PRICING */
-  .pricing-section { background: var(--dark); }
-  .pricing-section .section-title { color: var(--white); }
-  .pricing-section .section-label { color: var(--rose); }
-  .pricing-section .section-label::before { background: var(--rose); }
-  .pricing-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; margin-top: 80px;
-  }
-  .price-card {
-    background: rgba(255,255,255,0.04); padding: 60px 44px;
-    border: 1px solid rgba(255,255,255,0.06);
-    position: relative; transition: all 0.4s;
-  }
-  .price-card.featured {
-    background: var(--rose-deep); border-color: var(--rose-deep);
-  }
-  .price-card:hover { transform: translateY(-8px); }
-  .price-badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    background: var(--gold); color: var(--dark);
-    padding: 5px 18px; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
-    font-weight: 600;
-  }
-  .price-tier {
-    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--rose); margin-bottom: 20px;
-  }
-  .price-card.featured .price-tier { color: rgba(255,255,255,0.7); }
-  .price-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem; font-weight: 300; color: var(--white); line-height: 1;
-  }
-  .price-period { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 36px; margin-top: 6px; }
-  .price-features { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .price-features li {
-    font-size: 0.8rem; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px;
-  }
-  .price-features li::before { content: '✓'; color: var(--rose); }
-  .price-card.featured .price-features li::before { color: var(--white); }
-  .price-btn {
-    display: block; text-align: center; margin-top: 40px;
-    padding: 14px; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-    text-decoration: none; font-family: 'Montserrat', sans-serif;
-    border: 1px solid rgba(255,255,255,0.2); color: var(--white);
-    transition: all 0.3s; cursor: none;
-  }
-  .price-btn:hover, .price-card.featured .price-btn {
-    background: var(--white); color: var(--dark);
-  }
+  #precios { padding:120px 60px; max-width:1200px; margin:0 auto; }
+  .pricing-header { text-align:center; margin-bottom:72px; }
+  .pricing-header .section-label { justify-content:center; }
+  .pricing-header .section-label::before { display:none; }
+  .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .pricing-card { border:1px solid var(--sand); padding:52px 40px; border-radius:4px; position:relative; transition:all 0.4s; background:var(--white); }
+  .pricing-card.featured { background:var(--blue); border-color:var(--blue); transform:scale(1.04); box-shadow:0 24px 60px rgba(43,74,107,0.25); }
+  .pricing-card:not(.featured):hover { border-color:var(--blue-light); transform:translateY(-4px); box-shadow:0 12px 40px rgba(43,74,107,0.08); }
+  .pricing-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--rose-deep); color:var(--white); font-size:9px; letter-spacing:0.2em; text-transform:uppercase; padding:6px 18px; border-radius:2px; }
+  .pricing-name { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--blue); margin-bottom:8px; }
+  .pricing-card.featured .pricing-name { color:var(--white); }
+  .pricing-desc { font-size:12px; color:#999; font-weight:300; margin-bottom:32px; }
+  .pricing-card.featured .pricing-desc { color:rgba(255,255,255,0.6); }
+  .pricing-price { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--blue); line-height:1; }
+  .pricing-card.featured .pricing-price { color:var(--white); }
+  .pricing-period { font-size:12px; color:#aaa; margin-bottom:40px; }
+  .pricing-card.featured .pricing-period { color:rgba(255,255,255,0.5); }
+  .pricing-features { list-style:none; display:flex; flex-direction:column; gap:14px; margin-bottom:44px; }
+  .pricing-features li { font-size:13px; font-weight:300; display:flex; gap:12px; align-items:flex-start; }
+  .pricing-features li::before { content:'✓'; color:var(--teal); font-size:11px; margin-top:2px; flex-shrink:0; }
+  .pricing-card.featured .pricing-features li { color:rgba(255,255,255,0.85); }
+  .pricing-card.featured .pricing-features li::before { color:var(--blue-sky); }
+  .btn-pricing { display:block; text-align:center; padding:16px; border-radius:2px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-family:'Jost',sans-serif; font-weight:500; cursor:pointer; text-decoration:none; transition:all 0.3s; border:none; }
+  .btn-pricing-outline { border:1px solid var(--blue); color:var(--blue); background:transparent; }
+  .btn-pricing-outline:hover { background:var(--blue); color:var(--white); }
+  .btn-pricing-fill { background:var(--white); color:var(--blue); }
+  .btn-pricing-fill:hover { background:var(--ivory); }
 
-  /* CONTACT / FORM */
-  .contact-section {
-    background: var(--white);
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0;
-  }
-  .contact-info {
-    background: var(--blue-deep); padding: 100px 80px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .contact-info .section-label { color: var(--blue-light); }
-  .contact-info .section-label::before { background: var(--blue-light); }
-  .contact-info .section-title { color: var(--white); font-size: 2.8rem; }
-  .contact-info .section-title em { color: var(--rose); }
-  .contact-details { margin-top: 50px; display: flex; flex-direction: column; gap: 32px; }
-  .contact-item { display: flex; align-items: flex-start; gap: 20px; }
-  .contact-icon {
-    width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
-  }
-  .contact-item-label {
-    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--blue-light); margin-bottom: 6px;
-  }
-  .contact-item-value {
-    font-size: 0.9rem; color: var(--white); line-height: 1.6;
-  }
-  .contact-item-value a { color: inherit; text-decoration: none; }
-  .social-links { margin-top: 50px; display: flex; gap: 14px; }
-  .social-link {
-    width: 42px; height: 42px; border: 1px solid rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem;
-    transition: all 0.3s; cursor: none;
-  }
-  .social-link:hover { border-color: var(--rose); color: var(--rose); }
-
-  /* FORM */
-  .contact-form-wrap { padding: 100px 80px; background: var(--white); }
-  .form-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem; font-weight: 300; color: var(--dark); margin-bottom: 12px;
-  }
-  .form-sub { font-size: 0.78rem; color: var(--gray); margin-bottom: 50px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group.full { grid-column: 1/-1; }
-  .form-label {
-    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gray); font-weight: 500;
-  }
-  .form-input, .form-select, .form-textarea {
-    border: none; border-bottom: 1px solid rgba(0,0,0,0.12);
-    padding: 12px 0; font-size: 0.9rem; font-family: 'Montserrat', sans-serif;
-    background: transparent; outline: none; color: var(--dark);
-    transition: border-color 0.3s;
-    width: 100%;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--rose-deep);
-  }
-  .form-textarea { resize: none; height: 100px; }
-  .form-select { cursor: none; }
-  .form-submit {
-    margin-top: 36px; width: 100%;
-    background: var(--dark); color: var(--white);
-    border: none; padding: 18px; font-size: 0.68rem; letter-spacing: 0.25em;
-    text-transform: uppercase; font-family: 'Montserrat', sans-serif;
-    cursor: none; transition: all 0.3s ease;
-  }
-  .form-submit:hover { background: var(--rose-deep); }
-  .form-success {
-    display: none; text-align: center; padding: 40px;
-    color: var(--blue-deep); font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-  }
-
-  /* MAP SECTION */
-  .map-section { height: 420px; position: relative; }
-  .map-section iframe { width: 100%; height: 100%; border: none; }
-  .map-overlay {
-    position: absolute; top: 50%; left: 80px; transform: translateY(-50%);
-    background: var(--white); padding: 36px 44px;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.12);
-  }
-  .map-overlay h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 400; margin-bottom: 8px;
-  }
-  .map-overlay p { font-size: 0.78rem; color: var(--gray); line-height: 1.7; }
-  .map-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 18px; font-size: 0.6rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--rose-deep); font-weight: 500;
-  }
+  /* CONTACT */
+  #contacto { background:var(--ivory); padding:120px 60px; }
+  .contacto-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.2fr; gap:100px; align-items:start; }
+  .contact-details { margin-top:48px; display:flex; flex-direction:column; gap:28px; }
+  .contact-item { display:flex; gap:20px; align-items:flex-start; }
+  .contact-icon { width:48px; height:48px; border-radius:2px; background:var(--white); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; box-shadow:0 2px 12px rgba(43,74,107,0.08); }
+  .contact-item-title { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--rose-deep); margin-bottom:6px; }
+  .contact-item-val { font-size:14px; font-weight:300; color:var(--charcoal); }
+  .contact-item-val a { color:var(--charcoal); text-decoration:none; }
+  .contact-item-val a:hover { color:var(--blue); }
+  .contact-form { display:flex; flex-direction:column; gap:20px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-group { display:flex; flex-direction:column; gap:8px; }
+  .form-group label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--rose-deep); font-weight:500; }
+  .form-group input,.form-group select,.form-group textarea { background:var(--white); border:1px solid var(--sand); padding:14px 18px; font-family:'Jost',sans-serif; font-size:14px; font-weight:300; color:var(--charcoal); border-radius:2px; outline:none; width:100%; transition:border-color 0.3s; -webkit-appearance:none; }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--blue-light); }
+  .form-group textarea { min-height:140px; resize:vertical; }
+  .form-submit { background:var(--blue); color:var(--white); border:none; padding:18px 40px; font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; font-weight:500; cursor:pointer; border-radius:2px; transition:all 0.3s; align-self:flex-start; }
+  .form-submit:hover { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 8px 30px rgba(43,74,107,0.2); }
+  .form-success { display:none; padding:20px; background:rgba(74,143,168,0.1); border:1px solid var(--teal); border-radius:2px; color:var(--teal); font-size:13px; text-align:center; }
 
   /* FOOTER */
-  footer {
-    background: var(--dark); padding: 80px 60px 40px;
-  }
-  .footer-top {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px; padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-  .footer-brand .nav-logo { color: var(--white); font-size: 1.5rem; margin-bottom: 18px; display: inline-flex; }
-  .footer-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
-  .footer-col h4 {
-    font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--rose); margin-bottom: 24px;
-  }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .footer-col ul li a {
-    font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-col ul li a:hover { color: var(--rose); }
-  .footer-bottom {
-    padding-top: 36px; display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-copy { font-size: 0.65rem; color: rgba(255,255,255,0.25); }
-  .footer-langs { display: flex; gap: 14px; }
-  .footer-langs span {
-    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(255,255,255,0.25); cursor: none;
-    padding: 4px 10px; border: 1px solid rgba(255,255,255,0.1);
-    transition: all 0.3s;
-  }
-  .footer-langs span:hover { border-color: var(--rose); color: var(--rose); }
+  footer { background:var(--dark); color:var(--white); padding:80px 60px 40px; }
+  .footer-inner { max-width:1200px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:60px; margin-bottom:60px; }
+  .footer-brand-name { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; letter-spacing:0.1em; color:var(--white); margin-bottom:16px; }
+  .footer-brand-name span { color:var(--rose-light); font-style:italic; }
+  .footer-brand-desc { font-size:13px; font-weight:200; color:rgba(255,255,255,0.5); line-height:1.8; max-width:300px; }
+  .footer-social { display:flex; gap:12px; margin-top:32px; }
+  .social-btn { width:40px; height:40px; border-radius:2px; border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:16px; text-decoration:none; transition:all 0.3s; cursor:pointer; }
+  .social-btn:hover { border-color:var(--rose-light); background:rgba(201,164,160,0.15); }
+  .footer-col-title { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:24px; }
+  .footer-links { list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .footer-links a { font-size:13px; font-weight:200; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.3s; }
+  .footer-links a:hover { color:var(--white); }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,0.3); font-weight:200; }
+  .footer-legal { display:flex; gap:24px; }
+  .footer-legal a { font-size:11px; color:rgba(255,255,255,0.3); text-decoration:none; }
+  .footer-legal a:hover { color:rgba(255,255,255,0.6); }
 
-  /* FLOATING WA BUTTON */
-  .wa-float {
-    position: fixed; bottom: 36px; right: 36px; z-index: 999;
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #25D366;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 30px rgba(37,211,102,0.4);
-    text-decoration: none; cursor: none;
-    animation: waPulse 2.5s ease-in-out infinite;
-    transition: transform 0.3s;
-  }
-  .wa-float:hover { transform: scale(1.12); }
-  @keyframes waPulse {
-    0%,100% { box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
-    50% { box-shadow: 0 8px 50px rgba(37,211,102,0.7); }
-  }
-  .wa-float svg { width: 28px; height: 28px; fill: white; }
+  /* FLOATING */
+  .float-group { position:fixed; right:28px; bottom:28px; z-index:999; display:flex; flex-direction:column; gap:12px; align-items:center; }
+  .float-btn { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer; text-decoration:none; box-shadow:0 6px 24px rgba(0,0,0,0.15); transition:all 0.3s; border:none; position:relative; }
+  .float-btn:hover { transform:scale(1.1) translateY(-3px); box-shadow:0 12px 36px rgba(0,0,0,0.2); }
+  .float-wa { background:#25D366; }
+  .float-scroll { background:var(--blue); opacity:0; pointer-events:none; transition:all 0.4s; }
+  .float-scroll.visible { opacity:1; pointer-events:all; }
+  .wa-pulse { position:absolute; inset:0; border-radius:50%; background:#25D366; animation:pulse 2s ease-out infinite; }
+  @keyframes pulse { 0%{opacity:0.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.6)} }
 
-  /* REVEAL ANIMATION */
-  .reveal {
-    opacity: 0; transform: translateY(36px);
-    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
+  /* LIGHTBOX */
+  .lightbox { position:fixed; inset:0; z-index:2000; background:rgba(15,15,15,0.95); display:none; align-items:center; justify-content:center; padding:40px; }
+  .lightbox.open { display:flex; }
+  .lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:2px; }
+  .lightbox-close { position:absolute; top:24px; right:30px; color:var(--white); font-size:32px; cursor:pointer; background:none; border:none; line-height:1; }
 
-  /* MOBILE */
-  @media (max-width: 900px) {
-    nav { padding: 18px 24px; }
-    .nav-links { display: none; }
-    section { padding: 80px 24px; }
-    .hero-content { padding: 0 24px; }
-    .hero-badge { display: none; }
-    .stats-band { grid-template-columns: 2fr 2fr; }
-    .services-grid { grid-template-columns: 1fr; }
-    .ibiza-section { grid-template-columns: 1fr; }
-    .ibiza-img { height: 300px; }
-    .ibiza-content { padding: 60px 24px; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; }
-    .portfolio-item.tall img { height: 320px; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .contact-section { grid-template-columns: 1fr; }
-    .contact-info { padding: 60px 24px; }
-    .contact-form-wrap { padding: 60px 24px; }
-    .form-grid { grid-template-columns: 1fr; }
-    .map-overlay { left: 24px; right: 24px; transform: translateY(-60%); }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .scroll-ind { display: none; }
-    body { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
+  /* MOBILE MENU */
+  .mobile-menu { position:fixed; inset:0; z-index:900; background:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px; transform:translateX(100%); transition:transform 0.4s; }
+  .mobile-menu.open { transform:translateX(0); }
+  .mobile-menu a { font-size:28px; font-family:'Cormorant Garamond',serif; font-weight:300; color:var(--blue); text-decoration:none; }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.8s ease,transform 0.8s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width:1024px) {
+    nav { padding:0 30px; }
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .section-wrap,.about-features,#contacto,.gallery-header,.resenas-inner,.pricing-header { padding-left:30px; padding-right:30px; }
+    #about,.contacto-inner { grid-template-columns:1fr; gap:60px; padding:80px 30px; }
+    .services-grid,.reviews-grid,.pricing-grid,.proceso-steps { grid-template-columns:1fr; }
+    #services,#proceso,#resenas,#precios,#galeria,footer { padding-left:30px; padding-right:30px; }
+    .pricing-card.featured { transform:none; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+    .hero-stats { gap:30px; }
+    .gallery-grid { grid-template-columns:1fr 1fr; }
+    .gallery-item:nth-child(1) { grid-column:span 1; grid-row:span 1; }
+    .form-row { grid-template-columns:1fr; }
+    .hero-content { padding:80px 30px 0; }
+  }
+  @media (max-width:600px) {
+    .hero-stats { flex-wrap:wrap; gap:20px; }
+    .footer-top { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; text-align:center; }
+    .gallery-grid { grid-template-columns:1fr; }
+    .proceso-steps { grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#inicio" class="nav-logo"><span class="logo-dot"></span>HERIO AI</a>
+  <a href="#hero" class="nav-logo">HERIO <span>AI</span></a>
   <ul class="nav-links">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#ibiza">Ibiza 2026</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
     <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
     <li><a href="#precios">Precios</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Contactar</a></li>
   </ul>
-  <a href="#cita" class="nav-cta">Reservar Cita</a>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">Nosotros</a>
+  <a href="#services" onclick="toggleMenu()">Servicios</a>
+  <a href="#galeria" onclick="toggleMenu()">Galería</a>
+  <a href="#proceso" onclick="toggleMenu()">Proceso</a>
+  <a href="#resenas" onclick="toggleMenu()">Reseñas</a>
+  <a href="#precios" onclick="toggleMenu()">Precios</a>
+  <a href="#contacto" onclick="toggleMenu()">Contactar</a>
+</div>
+
 <!-- HERO -->
-<section id="inicio" class="hero">
+<section id="hero">
   <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
   <div class="hero-content">
-    <div class="hero-season">Ibiza · Temporada 2026</div>
+    <div class="hero-eyebrow">Ibiza · Madrid · España · Mundo</div>
     <h1 class="hero-title">
-      Marketing<br>
-      <em>Que Eleva</em><br>
-      <span class="line-blue">Tu Negocio</span>
+      Marketing Digital<br>
+      <em>que transforma</em><br>
+      <span class="blue-accent">negocios reales</span>
     </h1>
-    <p class="hero-sub">Agencia de Marketing Digital & Publicidad · AI Powered</p>
-    <p class="hero-desc">
-      Conectamos marcas premium con el mercado más exclusivo del Mediterráneo. 
-      Estrategias de marketing digital con inteligencia artificial para negocios que aspiran a lo extraordinario.
-    </p>
-    <div class="hero-btns">
-      <a href="#cita" class="btn-primary">Solicitar Cita</a>
-      <a href="#servicios" class="btn-outline">Ver Servicios</a>
+    <p class="hero-sub">Agencia premium con inteligencia artificial integrada. Lanzamos tu negocio en 7 días con estrategias que generan resultados medibles desde el primer momento.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/34641905184" target="_blank" class="btn-primary">✦ Comenzar Ahora</a>
+      <a href="#services" class="btn-secondary">Explorar Servicios →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">+500</div><div class="stat-label">Clientes activos</div></div>
+      <div class="stat"><div class="stat-num">4h</div><div class="stat-label">Entrega web premium</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Satisfacción clientes</div></div>
+      <div class="stat"><div class="stat-num">+5</div><div class="stat-label">Años de experiencia</div></div>
     </div>
   </div>
-  <div class="hero-badge">
-    <div class="badge-inner">
-      <div class="badge-year">2026</div>
-      <div class="badge-text">IBIZA<br>SEASON<br>PREMIUM</div>
-    </div>
-  </div>
-  <div class="scroll-ind">
+  <div class="scroll-indicator">
+    <span>Scroll</span>
     <div class="scroll-line"></div>
-    <span class="scroll-text">Scroll</span>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-band">
-  <div class="stat-item reveal">
-    <div class="stat-num">+500</div>
-    <div class="stat-label">Clientes Satisfechos</div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-wrap reveal">
+    <img class="about-img-main" src="https://i.imgur.com/rTr26Ux.jpeg" alt="Herio AI Ibiza equipo">
+    <img class="about-img-accent" src="https://i.imgur.com/z05dgYl.jpeg" alt="Ibiza vista mediterránea">
+    <div class="about-badge">
+      <div class="about-badge-num">5★</div>
+      <div class="about-badge-text">VALORACIÓN GOOGLE</div>
+    </div>
   </div>
-  <div class="stat-item reveal reveal-delay-1">
-    <div class="stat-num">4h</div>
-    <div class="stat-label">Página Web Lista</div>
+  <div class="reveal">
+    <div class="section-label">Sobre Herio AI</div>
+    <h2 class="section-title">La evolución del<br>marketing <em>digital</em></h2>
+    <p class="about-desc">En Herio AI no hacemos promesas vacías. Creamos resultados reales. Somos una agencia de marketing digital con años de experiencia en Ibiza, integrada con inteligencia artificial de última generación para ofrecer un sistema completo que impulsa tu negocio desde el primer día.</p>
+    <ul class="about-features">
+      <li>Página web profesional en solo 4 horas</li>
+      <li>Posicionamiento en Google, Maps e IA</li>
+      <li>Estrategias de redes sociales con IA integrada</li>
+      <li>Gestión 360° de marca digital</li>
+      <li>Soporte 24/7 en 6 idiomas</li>
+    </ul>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="https://wa.me/34641905184" target="_blank" class="btn-primary" style="background:var(--blue);color:var(--white);">💬 Hablar con un experto</a>
+    </div>
   </div>
-  <div class="stat-item reveal reveal-delay-2">
-    <div class="stat-num">7</div>
-    <div class="stat-label">Días para Despegar</div>
-  </div>
-  <div class="stat-item reveal reveal-delay-3">
-    <div class="stat-num">24/7</div>
-    <div class="stat-label">Soporte Disponible</div>
-  </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<section id="servicios" class="services-section">
-  <div class="reveal">
-    <div class="section-label">Nuestros Servicios</div>
-    <h2 class="section-title">Todo lo que tu negocio<br><em>necesita para brillar</em></h2>
-  </div>
-  <div class="services-intro reveal reveal-delay-1">
-    <p>Somos una agencia de marketing digital y publicidad con años de experiencia. Hemos evolucionado hacia el futuro integrando inteligencia artificial para ofrecer un sistema completo que impulsa tu negocio desde el primer día.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <span class="service-num">01</span>
-      <div class="service-icon">🌐</div>
-      <h3 class="service-title">Página Web Premium</h3>
-      <p class="service-desc">Diseño y desarrollo de sitios web de alta calidad en 4 horas. Optimizados, con fotos, vídeos y contenido adaptado a tu negocio.</p>
-      <span class="service-tag">Desde 4 horas →</span>
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">Lo que hacemos</div>
+        <h2 class="section-title">Servicios <em>premium</em><br>a tu medida</h2>
+      </div>
+      <a href="#contacto" class="btn-primary" style="background:var(--blue);color:var(--white);">Ver todos →</a>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <span class="service-num">02</span>
-      <div class="service-icon">📍</div>
-      <h3 class="service-title">Posicionamiento Google & IA</h3>
-      <p class="service-desc">Colocamos tu marca en las primeras posiciones en Google, Maps e inteligencia artificial para que tus clientes te encuentren primero.</p>
-      <span class="service-tag">Top posiciones →</span>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <span class="service-num">03</span>
-      <div class="service-icon">📱</div>
-      <h3 class="service-title">Redes Sociales & Contenido</h3>
-      <p class="service-desc">Gestión integral de Instagram, TikTok y más. Contenido premium que conecta con tu audiencia y genera conversiones reales.</p>
-      <span class="service-tag">Gestión completa →</span>
-    </div>
-    <div class="service-card reveal">
-      <span class="service-num">04</span>
-      <div class="service-icon">🚀</div>
-      <h3 class="service-title">Pack Lanzamiento 7 Días</h3>
-      <p class="service-desc">Todo lo que necesitas para despegar: web, posicionamiento, redes sociales, publicidad y automatización con IA en una semana.</p>
-      <span class="service-tag">Pack integral →</span>
-    </div>
-    <div class="service-card reveal reveal-delay-1">
-      <span class="service-num">05</span>
-      <div class="service-icon">🤖</div>
-      <h3 class="service-title">Marketing con IA</h3>
-      <p class="service-desc">Automatización inteligente, chatbots, análisis predictivo y estrategias basadas en datos para maximizar tu retorno de inversión.</p>
-      <span class="service-tag">Tecnología avanzada →</span>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <span class="service-num">06</span>
-      <div class="service-icon">📊</div>
-      <h3 class="service-title">Publicidad Digital</h3>
-      <p class="service-desc">Campañas en Google Ads, Meta Ads y más. Targeting preciso para alcanzar a tu cliente ideal en Ibiza y mercados internacionales.</p>
-      <span class="service-tag">ROI garantizado →</span>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <span class="service-icon">🌐</span>
+        <div class="service-name">Páginas Web Premium</div>
+        <p class="service-desc">Diseño ultra-premium optimizado para conversión. Entrega en 4 horas con fotos, vídeos y contenido de alta calidad adaptado a tu negocio.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">02</span>
+        <span class="service-icon">📍</span>
+        <div class="service-name">SEO & Google Maps</div>
+        <p class="service-desc">Colocamos tu marca en las primeras posiciones de Google, Maps e IA. Más visibilidad, más clientes, más ingresos desde el mes 1.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">03</span>
+        <span class="service-icon">📱</span>
+        <div class="service-name">Redes Sociales con IA</div>
+        <p class="service-desc">Gestión completa de Instagram, TikTok, Facebook y LinkedIn con contenido generado por inteligencia artificial y estrategia humana experta.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <span class="service-icon">🎯</span>
+        <div class="service-name">Publicidad Digital</div>
+        <p class="service-desc">Campañas de Meta Ads, Google Ads y TikTok Ads optimizadas con IA para el máximo retorno de inversión. ROI garantizado desde el primer mes.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">05</span>
+        <span class="service-icon">🤖</span>
+        <div class="service-name">Chatbots & Automatización</div>
+        <p class="service-desc">Implementamos sistemas de automatización con IA para WhatsApp, email y CRM. Tu negocio trabajando 24/7 sin esfuerzo adicional.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">06</span>
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Branding & Identidad</div>
+        <p class="service-desc">Creación de marca completa: logo, paleta de colores, tipografía y guía de estilo. Tu identidad visual premium lista en 48 horas.</p>
+        <a href="#contacto" class="service-link">Solicitar ↗</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- IBIZA FEATURE -->
-<div id="ibiza" class="ibiza-section">
-  <div class="ibiza-img"></div>
-  <div class="ibiza-content">
-    <div class="section-label reveal">Ibiza 2026</div>
-    <h2 class="section-title reveal reveal-delay-1">El mercado más<br><em>exclusivo</em><br>del Mediterráneo</h2>
-    <ul class="ibiza-list reveal reveal-delay-2">
-      <li>Ibiza recibe más de 4 millones de visitantes premium cada temporada, el mercado más lucrativo de España.</li>
-      <li>Hoteles 5 estrellas, beach clubs exclusivos, villas de lujo y restaurantes de alta cocina que necesitan marketing de élite.</li>
-      <li>Presencia internacional: clientes de Reino Unido, Alemania, Italia, Francia y Oriente Medio con alto poder adquisitivo.</li>
-      <li>Estrategias multilingüe adaptadas a cada mercado: ES · EN · FR · IT · AR · DE.</li>
-      <li>Conocemos Ibiza desde dentro. Somos locales con visión global.</li>
-    </ul>
+<!-- GALLERY -->
+<section id="galeria">
+  <div class="gallery-header reveal">
+    <div class="section-label" style="justify-content:center;"><span>Galería</span></div>
+    <h2 class="section-title" style="text-align:center;">Nuestro trabajo <em>en Ibiza</em></h2>
+    <p style="text-align:center;font-size:15px;font-weight:300;color:#666;margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto;">Proyectos reales, resultados reales. Cada imagen cuenta la historia de un negocio transformado.</p>
   </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/bLweH0F.jpeg')">
+      <img src="https://i.imgur.com/bLweH0F.jpeg" alt="Herio AI Ibiza proyecto 1">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Herio AI · Ibiza</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/rTr26Ux.jpeg')">
+      <img src="https://i.imgur.com/rTr26Ux.jpeg" alt="Herio AI Ibiza proyecto 2">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Marketing Digital</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/z05dgYl.jpeg')">
+      <img src="https://i.imgur.com/z05dgYl.jpeg" alt="Herio AI Ibiza proyecto 3">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Estrategia Digital</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://i.imgur.com/ohkuZRL.jpeg')">
+      <img src="https://i.imgur.com/ohkuZRL.jpeg" alt="Herio AI Ibiza proyecto 4">
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Branding Premium</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
 </div>
 
-<!-- PORTFOLIO -->
-<section class="portfolio-section">
-  <div class="reveal">
-    <div class="section-label">Portfolio</div>
-    <h2 class="section-title">Resultados que<br><em>hablan por sí solos</em></h2>
-  </div>
-  <div class="portfolio-grid">
-    <div class="portfolio-item tall reveal">
-      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Ibiza sunset marketing">
-      <div class="portfolio-overlay"><span class="portfolio-label">Beach Club Premium</span></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div class="portfolio-item reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Luxury hotel">
-        <div class="portfolio-overlay"><span class="portfolio-label">Hotel de Lujo 5★</span></div>
-      </div>
-      <div class="portfolio-item reveal reveal-delay-2">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Restaurant">
-        <div class="portfolio-overlay"><span class="portfolio-label">Restaurante Gastronómico</span></div>
-      </div>
-    </div>
-    <div class="portfolio-item reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80" alt="Villa luxury">
-      <div class="portfolio-overlay"><span class="portfolio-label">Villa de Lujo</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- PROCESS -->
-<section id="proceso" class="process-section">
-  <div class="reveal">
-    <div class="section-label">Cómo Trabajamos</div>
-    <h2 class="section-title">Tu negocio en órbita<br><em>en 7 días</em></h2>
-  </div>
-  <div class="process-steps">
-    <div class="process-step reveal">
-      <div class="step-num">1</div>
-      <h3 class="step-title">Consulta Gratuita</h3>
-      <p class="step-desc">Analizamos tu negocio, objetivos y mercado objetivo. Diseñamos una estrategia personalizada para Ibiza 2026.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="step-num">2</div>
-      <h3 class="step-title">Diseño & Creación</h3>
-      <p class="step-desc">Creamos tu página web premium en 4 horas. Fotografía, contenido y branding de alta calidad adaptado a tu sector.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="step-num">3</div>
-      <h3 class="step-title">Lanzamiento & Posicionamiento</h3>
-      <p class="step-desc">Activamos tu presencia en Google, Maps, redes sociales y campañas publicitarias. Tu marca visible desde el día 1.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="step-num">4</div>
-      <h3 class="step-title">Crecimiento Continuo</h3>
-      <p class="step-desc">Optimización constante con IA, reportes mensuales y soporte 24/7. Tu negocio creciendo temporada tras temporada.</p>
+<section id="proceso">
+  <div class="proceso-inner">
+    <div class="section-label">Nuestro proceso</div>
+    <h2 class="section-title">Del concepto al<br><em>éxito en 7 días</em></h2>
+    <div class="proceso-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <span class="step-icon">🔍</span>
+        <div class="step-name">Análisis</div>
+        <p class="step-desc">Estudiamos tu negocio, competencia y mercado para crear una estrategia personalizada y efectiva.</p>
+        <div class="step-time">Día 1</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <span class="step-icon">🎨</span>
+        <div class="step-name">Diseño</div>
+        <p class="step-desc">Creamos tu identidad visual y web premium en tiempo récord con la mejor calidad del mercado.</p>
+        <div class="step-time">Días 2-3</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <span class="step-icon">🚀</span>
+        <div class="step-name">Lanzamiento</div>
+        <p class="step-desc">Publicamos tu presencia digital optimizada y activamos tus campañas publicitarias con IA.</p>
+        <div class="step-time">Días 4-5</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <span class="step-icon">📈</span>
+        <div class="step-name">Resultados</div>
+        <p class="step-desc">Monitorizamos, optimizamos y escalamos. Resultados medibles desde el primer mes garantizado.</p>
+        <div class="step-time">Día 7+</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="reveal">
-    <div class="section-label">Testimonios</div>
-    <h2 class="section-title">Lo que dicen<br><em>nuestros clientes</em></h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">"HERIO AI transformó nuestra presencia digital. En solo 3 meses triplicamos las reservas online de nuestro beach club en Ibiza."</p>
-      <div class="testimonial-author">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Carlos" class="author-avatar">
-        <div>
-          <div class="author-name">Carlos M.</div>
-          <div class="author-role">Beach Club Owner · Ibiza</div>
+<!-- REVIEWS -->
+<section id="resenas">
+  <div class="resenas-inner">
+    <div class="resenas-header">
+      <div class="section-label">Testimonios</div>
+      <h2 class="section-title">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Herio AI transformó completamente mi restaurante en Ibiza. En menos de una semana teníamos web, redes sociales y Google Maps optimizados. Las reservas aumentaron un 340% el primer mes.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div>
+            <div class="reviewer-name">Marco Rossi</div>
+            <div class="reviewer-role">Restaurante La Brasa, Ibiza</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="testimonial-card reveal reveal-delay-1">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">"Mi restaurante ahora aparece primero en Google. La página web que crearon es absolutamente espectacular. Resultados reales desde el día 1."</p>
-      <div class="testimonial-author">
-        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5c8?w=100&q=80" alt="Sofia" class="author-avatar">
-        <div>
-          <div class="author-name">Sofía R.</div>
-          <div class="author-role">Chef & Restauradora · Eivissa</div>
+      <div class="review-card reveal">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Increíble equipo. Profesionalidad máxima y resultados que superaron todas mis expectativas. Mi tienda online pasó de 0 a 50k€ mensuales en 3 meses. Totalmente recomendados.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SG</div>
+          <div>
+            <div class="reviewer-name">Sofia García</div>
+            <div class="reviewer-role">E-commerce Fashion, Madrid</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-quote">"La mejor inversión para mi villa de alquiler. Ahora tenemos lista de espera toda la temporada. HERIO AI es imprescindible."</p>
-      <div class="testimonial-author">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Marco" class="author-avatar">
-        <div>
-          <div class="author-name">Marco L.</div>
-          <div class="author-role">Villa Owner · Ibiza</div>
+      <div class="review-card reveal">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">La mejor inversión que he hecho para mi negocio. El chatbot de WhatsApp solo ya me ahorra 20 horas semanales. La IA integrada en las redes sociales es una pasada total.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JL</div>
+          <div>
+            <div class="reviewer-name">James Larson</div>
+            <div class="reviewer-role">Beach Club, Ibiza</div>
+          </div>
         </div>
       </div>
     </div>
@@ -881,279 +557,276 @@
 </section>
 
 <!-- PRICING -->
-<section id="precios" class="pricing-section">
-  <div class="reveal">
-    <div class="section-label">Precios Transparentes</div>
-    <h2 class="section-title">Elige tu plan<br>para la temporada 2026</h2>
+<section id="precios">
+  <div class="pricing-header">
+    <div class="section-label">Inversión</div>
+    <h2 class="section-title">Planes <em>transparentes</em><br>sin sorpresas</h2>
+    <p style="font-size:15px;font-weight:300;color:#666;margin-top:16px;">Todo incluido. Sin contratos anuales. Cancela cuando quieras.</p>
   </div>
   <div class="pricing-grid">
-    <div class="price-card reveal">
-      <div class="price-tier">Esencial</div>
-      <div class="price-amount">Consultar</div>
-      <div class="price-period">Precio a medida</div>
-      <ul class="price-features">
-        <li>Página web profesional</li>
-        <li>Perfil de Google optimizado</li>
-        <li>Redes sociales básicas</li>
-        <li>Soporte por email</li>
-        <li>1 idioma</li>
-      </ul>
-      <a href="#cita" class="price-btn">Solicitar Info</a>
-    </div>
-    <div class="price-card featured reveal reveal-delay-1">
-      <div class="price-badge">MÁS POPULAR</div>
-      <div class="price-tier">Premium Ibiza</div>
-      <div class="price-amount">Pack 7 Días</div>
-      <div class="price-period">Todo incluido · Temporada completa</div>
-      <ul class="price-features">
-        <li>Web premium en 4 horas</li>
-        <li>Posicionamiento Google + Maps + IA</li>
-        <li>Redes sociales gestionadas</li>
-        <li>Campañas publicitarias</li>
-        <li>4 idiomas (ES/EN/FR/IT)</li>
-        <li>Soporte 24/7 WhatsApp</li>
+    <div class="pricing-card reveal">
+      <div class="pricing-name">Starter</div>
+      <p class="pricing-desc">Para negocios que están empezando</p>
+      <div class="pricing-price">297€</div>
+      <div class="pricing-period">/mes · sin permanencia</div>
+      <ul class="pricing-features">
+        <li>Web profesional (1 página)</li>
+        <li>Google My Business optimizado</li>
+        <li>Redes sociales (2 plataformas)</li>
+        <li>8 posts/mes con IA</li>
         <li>Informe mensual</li>
+        <li>Soporte por email</li>
       </ul>
-      <a href="#cita" class="price-btn">Empezar Ahora</a>
+      <a href="https://wa.me/34641905184" target="_blank" class="btn-pricing btn-pricing-outline">Comenzar</a>
     </div>
-    <div class="price-card reveal reveal-delay-2">
-      <div class="price-tier">Elite AI</div>
-      <div class="price-amount">Empresas</div>
-      <div class="price-period">Estrategia personalizada</div>
-      <ul class="price-features">
-        <li>Todo del plan Premium</li>
-        <li>Automatización con IA</li>
-        <li>Chatbot personalizado</li>
-        <li>Análisis predictivo</li>
-        <li>6 idiomas</li>
-        <li>Account manager dedicado</li>
-        <li>Estrategia anual</li>
+    <div class="pricing-card featured reveal">
+      <div class="pricing-badge">MÁS POPULAR</div>
+      <div class="pricing-name">Pro</div>
+      <p class="pricing-desc">Para negocios que quieren crecer rápido</p>
+      <div class="pricing-price">597€</div>
+      <div class="pricing-period">/mes · sin permanencia</div>
+      <ul class="pricing-features">
+        <li>Web premium multi-página</li>
+        <li>SEO avanzado + Google Maps</li>
+        <li>Redes sociales (4 plataformas)</li>
+        <li>20 posts/mes + Stories + Reels</li>
+        <li>Meta Ads + Google Ads</li>
+        <li>Chatbot WhatsApp</li>
+        <li>Informe semanal</li>
+        <li>Soporte 24/7</li>
       </ul>
-      <a href="#cita" class="price-btn">Hablar con un Experto</a>
+      <a href="https://wa.me/34641905184" target="_blank" class="btn-pricing btn-pricing-fill">Empezar ahora</a>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="pricing-name">Enterprise</div>
+      <p class="pricing-desc">Para marcas que dominan su mercado</p>
+      <div class="pricing-price">Custom</div>
+      <div class="pricing-period">precio personalizado</div>
+      <ul class="pricing-features">
+        <li>Todo lo del plan Pro</li>
+        <li>Estrategia 360° personalizada</li>
+        <li>Influencer marketing</li>
+        <li>Video producción</li>
+        <li>CRM + automatizaciones</li>
+        <li>Account manager dedicado</li>
+        <li>Reuniones semanales</li>
+        <li>Resultados garantizados</li>
+      </ul>
+      <a href="https://wa.me/34641905184" target="_blank" class="btn-pricing btn-pricing-outline">Contactar</a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<div id="contacto" class="contact-section">
-  <div class="contact-info">
-    <div class="section-label reveal">Contacto</div>
-    <h2 class="section-title reveal reveal-delay-1">Hablemos de<br><em>tu proyecto</em></h2>
-    <div class="contact-details">
-      <div class="contact-item reveal reveal-delay-2">
-        <div class="contact-icon">📞</div>
-        <div>
-          <div class="contact-item-label">Teléfono & WhatsApp</div>
-          <div class="contact-item-value"><a href="tel:+34641905184">+34 641 90 51 84</a></div>
+<section id="contacto">
+  <div class="contacto-inner">
+    <div>
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Hablemos de<br>tu <em>proyecto</em></h2>
+      <p style="font-size:15px;font-weight:300;color:#666;margin-top:24px;line-height:1.8;">Respuesta garantizada en menos de 2 horas. Nos encanta conocer nuevos proyectos y ayudar a negocios a crecer.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-item-title">WhatsApp / Teléfono</div>
+            <div class="contact-item-val"><a href="https://wa.me/34641905184" target="_blank">+34 641 905 184</a></div>
+          </div>
         </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-2">
-        <div class="contact-icon">🌐</div>
-        <div>
-          <div class="contact-item-label">Sitio Web</div>
-          <div class="contact-item-value"><a href="https://herioagenciaibiza.github.io/" target="_blank">herioagenciaibiza.github.io</a></div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-item-title">Email</div>
+            <div class="contact-item-val"><a href="mailto:herioagenciabiza@gmail.com">herioagenciabiza@gmail.com</a></div>
+          </div>
         </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-3">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-item-label">Zonas de Servicio</div>
-          <div class="contact-item-value">Ibiza · Eivissa · Madrid<br>Aranjuez · Online Global</div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-title">Ubicación</div>
+            <div class="contact-item-val">Ibiza, España · Worldwide</div>
+          </div>
         </div>
-      </div>
-      <div class="contact-item reveal reveal-delay-3">
-        <div class="contact-icon">🕐</div>
-        <div>
-          <div class="contact-item-label">Horario</div>
-          <div class="contact-item-value">Abierto 24 horas · 7 días<br>Siempre disponibles para ti</div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-item-title">Horario</div>
+            <div class="contact-item-val">Lun–Dom · 9:00–22:00</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="social-links reveal">
-      <a href="https://www.tiktok.com/@herioai" target="_blank" class="social-link" title="TikTok">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/></svg>
-      </a>
-      <a href="https://wa.me/34641905184" target="_blank" class="social-link" title="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
-    </div>
-  </div>
-
-  <!-- APPOINTMENT FORM -->
-  <div id="cita" class="contact-form-wrap">
-    <h3 class="form-title">Reserva tu Cita</h3>
-    <p class="form-sub">Consulta gratuita · Respondemos en menos de 2 horas</p>
-    <div id="formContainer">
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Nombre *</label>
-          <input type="text" class="form-input" id="fname" placeholder="Tu nombre">
+    <div>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de tu empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+34 600 000 000">
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Apellidos *</label>
-          <input type="text" class="form-input" id="lname" placeholder="Tus apellidos">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email *</label>
-          <input type="email" class="form-input" id="email" placeholder="tu@email.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Teléfono / WhatsApp</label>
-          <input type="tel" class="form-input" id="phone" placeholder="+34 600 000 000">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Tipo de Negocio</label>
-          <select class="form-select" id="business">
-            <option value="">Selecciona...</option>
-            <option>Hotel / Alojamiento</option>
-            <option>Restaurante / Bar</option>
-            <option>Beach Club</option>
-            <option>Villa de Alquiler</option>
-            <option>Tienda / Boutique</option>
-            <option>Servicios Profesionales</option>
-            <option>Otro</option>
+          <label>Servicio de interés</label>
+          <select>
+            <option value="">Selecciona un servicio</option>
+            <option>Página Web Premium</option>
+            <option>SEO & Google Maps</option>
+            <option>Redes Sociales con IA</option>
+            <option>Publicidad Digital</option>
+            <option>Chatbots & Automatización</option>
+            <option>Branding & Identidad</option>
+            <option>Pack Completo</option>
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">Idioma Preferido</label>
-          <select class="form-select" id="lang">
-            <option value="">Selecciona...</option>
-            <option>Español</option>
-            <option>English</option>
-            <option>Français</option>
-            <option>Italiano</option>
-            <option>Árabe</option>
-          </select>
+          <label>Mensaje *</label>
+          <textarea placeholder="Cuéntanos sobre tu negocio y lo que necesitas..." required></textarea>
         </div>
-        <div class="form-group full">
-          <label class="form-label">Presupuesto Aproximado</label>
-          <select class="form-select" id="budget">
-            <option value="">Selecciona rango...</option>
-            <option>Menos de 1.000€</option>
-            <option>1.000€ – 3.000€</option>
-            <option>3.000€ – 8.000€</option>
-            <option>Más de 8.000€</option>
-            <option>Prefiero discutirlo</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label class="form-label">Cuéntanos sobre tu proyecto *</label>
-          <textarea class="form-textarea" id="message" placeholder="¿Qué necesita tu negocio? ¿Cuáles son tus objetivos para la temporada 2026?"></textarea>
-        </div>
-      </div>
-      <button class="form-submit" onclick="submitForm()">Solicitar Cita Gratuita →</button>
-    </div>
-    <div class="form-success" id="formSuccess">
-      ✦ ¡Gracias! Nos pondremos en contacto contigo en menos de 2 horas.
+        <button type="submit" class="form-submit">✦ Enviar mensaje</button>
+        <div class="form-success" id="formSuccess">✓ ¡Mensaje enviado! Te contactamos en menos de 2 horas.</div>
+      </form>
     </div>
   </div>
-</div>
-
-<!-- MAP -->
-<div class="map-section">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48706.66693398145!2d1.3685!3d38.9067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1299e4d97e8f6c2b%3A0x4c2afcd03d4c95e0!2sEivissa%2C%20Illes%20Balears!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses"
-    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-  <div class="map-overlay">
-    <h3>HERIO AI · Ibiza</h3>
-    <p>Servicios a domicilio y online<br>Eivissa · Madrid · Global</p>
-    <div class="map-badge">
-      <span>●</span> Abierto 24 horas
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#inicio" class="nav-logo"><span class="logo-dot"></span>HERIO AI</a>
-      <p>Agencia de marketing digital y publicidad con inteligencia artificial. Expertos en el mercado premium de Ibiza y España.</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">HERIO <span>AI</span></div>
+        <p class="footer-brand-desc">Agencia de marketing digital premium en Ibiza. Transformamos negocios con inteligencia artificial y estrategias que funcionan desde el primer día.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://wa.me/34641905184" target="_blank" title="WhatsApp">💬</a>
+          <a class="social-btn" href="https://instagram.com" target="_blank" title="Instagram">📸</a>
+          <a class="social-btn" href="https://facebook.com" target="_blank" title="Facebook">👍</a>
+          <a class="social-btn" href="mailto:herioagenciabiza@gmail.com" title="Email">✉️</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <ul class="footer-links">
+          <li><a href="#services">Páginas Web</a></li>
+          <li><a href="#services">SEO & Maps</a></li>
+          <li><a href="#services">Redes Sociales</a></li>
+          <li><a href="#services">Publicidad</a></li>
+          <li><a href="#services">Chatbots IA</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#about">Sobre nosotros</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#resenas">Testimonios</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/34641905184">+34 641 905 184</a></li>
+          <li><a href="mailto:herioagenciabiza@gmail.com">herioagenciabiza@gmail.com</a></li>
+          <li><a href="#">Ibiza, España</a></li>
+          <li><a href="#">Lun–Dom 9–22h</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Servicios</h4>
-      <ul>
-        <li><a href="#servicios">Páginas Web</a></li>
-        <li><a href="#servicios">SEO & Google</a></li>
-        <li><a href="#servicios">Redes Sociales</a></li>
-        <li><a href="#servicios">Publicidad Digital</a></li>
-        <li><a href="#servicios">Marketing con IA</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Empresa</h4>
-      <ul>
-        <li><a href="#inicio">Sobre Nosotros</a></li>
-        <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#precios">Precios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="https://www.tiktok.com/@herioai" target="_blank">TikTok</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto Rápido</h4>
-      <ul>
-        <li><a href="tel:+34641905184">+34 641 90 51 84</a></li>
-        <li><a href="https://wa.me/34641905184" target="_blank">WhatsApp</a></li>
-        <li><a href="https://herioagenciaibiza.github.io/" target="_blank">Web</a></li>
-        <li><a href="#cita">Reservar Cita</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Herio Marketing Digital y Publicidad · Todos los derechos reservados</div>
-    <div class="footer-langs">
-      <span>ES</span><span>EN</span><span>FR</span><span>IT</span><span>AR</span>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Herio AI. Todos los derechos reservados. Ibiza, España.</div>
+      <div class="footer-legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Cookies</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/34641905184" class="wa-float" target="_blank" title="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<!-- FLOATING BUTTONS -->
+<div class="float-group">
+  <a class="float-btn float-wa" href="https://wa.me/34641905184" target="_blank" title="WhatsApp">
+    <div class="wa-pulse"></div>
+    <span>💬</span>
+  </a>
+  <button class="float-btn float-scroll" id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir">↑</button>
+</div>
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  document.addEventListener('mousemove', e => {
-    cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
-    ring.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+  // NAV scroll
+  const navbar = document.getElementById('navbar');
+  const scrollBtn = document.getElementById('scrollBtn');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 80);
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+    });
   });
 
   // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  // Nav scroll
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.06)' : '';
-  });
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
   // Form submit
-  function submitForm() {
-    const name = document.getElementById('fname').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    if (!name || !email || !message) {
-      alert('Por favor, completa los campos obligatorios (*)');
-      return;
-    }
-    const waMsg = encodeURIComponent(
-      `¡Hola HERIO AI! 👋\n\nNombre: ${name}\nEmail: ${email}\nNegocio: ${document.getElementById('business').value || 'No especificado'}\nPresupuesto: ${document.getElementById('budget').value || 'Por definir'}\n\nMensaje: ${message}`
-    );
-    window.open(`https://wa.me/34641905184?text=${waMsg}`, '_blank');
-    document.getElementById('formContainer').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+  function submitForm(e) {
+    e.preventDefault();
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => success.style.display = 'none', 6000);
   }
+
+  // Hamburger animation
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    const spans = this.querySelectorAll('span');
+    if (this.classList.contains('active')) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
 </script>
 </body>
 </html>
