@@ -180,6 +180,33 @@ img{max-width:100%}
 }
 @media(hover:none){.card:hover{box-shadow:none}.btn:hover,.fab:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* ===== Calm mode ===== */
+html,body{overflow-x:hidden}
+@keyframes spin2{from{transform:rotateX(-18deg) rotateY(0)}to{transform:rotateX(-18deg) rotateY(360deg)}}
+.cube{animation:spin2 40s linear infinite}
+.ring{animation:none;transform:rotateX(75deg)}
+.price{animation:none;transform:none}
+.fab.wa1{animation:none}
+.car{animation-duration:90s}.car.rev{animation-duration:110s}
+.rv{transform:translateY(14px);transition:opacity .7s,transform .7s}
+.rv.in{transform:none}
+.form{transform:none}
+.top3d img{transform:rotateX(2deg)}
+.btn:hover{transform:translateY(-2px)}
+.fab:hover{transform:scale(1.06)}
+.rctl{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.rf{display:flex;gap:8px;flex-wrap:wrap}
+.rf button,.rctl select,.hp{font:inherit;font-size:.85rem;background:#1a1608;border:1px solid #e5b84677;color:var(--gold);border-radius:20px;padding:6px 14px;cursor:pointer}
+.rf button.on{background:linear-gradient(135deg,#b8862b,var(--gold2));color:#1a1200;font-weight:800}
+.rctl select option{background:#0d0b06}
+.rmeta{font-size:.75rem;opacity:.65;margin-bottom:6px;transform:translateZ(15px)}
+.hp{margin-top:10px;padding:4px 12px;font-size:.78rem}
+.hp.on{background:#2b2208;border-color:var(--gold)}
+#rlist{grid-template-columns:1fr}
+@media(min-width:600px){#rlist{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){#rlist{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){#services .grid,.why .grid{grid-template-columns:repeat(5,1fr)}.form{max-width:900px}section{padding-left:4%;padding-right:4%}}
 </style>
 </head>
 <body>
@@ -242,6 +269,7 @@ img{max-width:100%}
 
 <section class="rv" id="reviews"><h3 class="t gold" data-i="rt"></h3>
 <div class="rsum"><div style="text-align:center"><div class="big gold" id="avg">5.0</div><div class="stars" id="avgs">★★★★★</div><small><span id="cnt">0</span> <span data-i="rv"></span></small></div><div class="dist" id="dist"></div></div>
+<div class="rctl"><div class="rf" id="rf"><button type="button" data-f="0" class="on" data-i="rall"></button><button type="button" data-f="5">5★</button><button type="button" data-f="4">4★</button></div><select id="rsort" aria-label="sort"><option value="new" data-i="rnew"></option><option value="hi" data-i="rhi"></option></select></div>
 <div class="grid" id="rlist"></div>
 <div class="rin"><div class="sin" id="sin" style="text-align:center"><small data-i="rp" style="display:block"></small><button type="button">★</button><button type="button">★</button><button type="button">★</button><button type="button">★</button><button type="button">★</button></div>
 <input type="text" id="rname" maxlength="40" data-p="rn"><textarea id="rtxt" rows="3" maxlength="300" data-p="rc"></textarea><div class="err" id="rerr"></div>
@@ -283,15 +311,16 @@ img{max-width:100%}
 
 <script>
 const T={
-ar:{n1:"خدماتنا",n2:"العرض",n3:"اتصل بنا",h1:"موقع إلكتروني احترافي",h2:"لمشروعك أو متجرك",h3:"يزيد من مبيعاتك",h4:"لتصل إلى المزيد من العملاء في المغرب وخراجه — معك نحو المستقبل الرقمي",b1:"تواصل معنا الآن",b2:"اكتشف العرض",st:"خدماتنا",s1:"موقع إلكتروني احترافي",d1:"تصميم عصري ومتجاوب مع جميع الأجهزة",s2:"تحسين الظهور في Google",d2:"Google Maps والذكاء الاصطناعي (Gemini - ChatGPT)",s3:"ربط مباشر مع Google Maps",d3:"لإيجاد موقعك بسهولة",s4:"التواصل المباشر",d4:"عبر WhatsApp",s5:"إضافة صور احترافية",d5:"ومضامين تعريفية لمنتجاتك وخدماتك",ot:"عرض حصري",oe:"عرض حصري",os:"موقعك هو هويتك الرقمية فاجعله مميزًا",wt:"لماذا نحن؟",w1:"أمان عالي وحماية بياناتك",w2:"زيادة المبيعات",w3:"دعم فني طوال الوقت",w4:"خدمة مهنية وموثوقة",w5:"تصميم عصري وفريد",ct:"تواصل معنا",gt:"معرض أعمالنا",rt:"آراء عملائنا",rv:"تقييم",rn:"اسمك",rc:"اكتب رأيك...",rs:"أرسل التقييم",rp:"اختر تقييمك",ft:"اطلب عرضك الآن",fn:"الاسم الكامل",fp:"الهاتف / WhatsApp",fe:"البريد الإلكتروني (اختياري)",fs:"الخدمة المطلوبة",fb:"الميزانية",fm:"طريقة التواصل المفضلة",fg:"رسالتك",fc:"أوافق على التواصل معي بخصوص طلبي",fx:"إرسال عبر WhatsApp",er:"يرجى التحقق من الحقول",ok:"شكرًا! تم فتح WhatsApp برسالتك",oo:"أخرى",cc:"اتصال",cm:"بريد",rok:"شكرًا على تقييمك!",cT:"مساعد HD الذكي",cph:"اكتب سؤالك...",cw:"مرحبًا! أنا المساعد الذكي، اسألني عن أي شيء 😊",cq1:"ما هي خدماتكم؟",cq2:"كم سعر الموقع؟",cq3:"كيف أبدأ؟",cerr:"المساعد غير متاح حاليًا، راسلنا عبر WhatsApp."},
-fr:{n1:"Services",n2:"Offre",n3:"Contact",h1:"Site web professionnel",h2:"pour votre projet ou boutique",h3:"Boostez vos ventes",h4:"Touchez plus de clients au Maroc et à l'étranger — avec vous vers l'avenir digital",b1:"Contactez-nous",b2:"Voir l'offre",st:"Nos services",s1:"Site web professionnel",d1:"Design moderne, adapté à tous les appareils",s2:"Visibilité sur Google",d2:"Google Maps et IA (Gemini - ChatGPT)",s3:"Lien direct Google Maps",d3:"Pour être trouvé facilement",s4:"Contact direct",d4:"via WhatsApp",s5:"Photos professionnelles",d5:"et contenus de présentation de vos produits",ot:"Offre exclusive",oe:"OFFRE EXCLUSIVE",os:"Votre site est votre identité digitale : rendez-la unique",wt:"Pourquoi nous ?",w1:"Haute sécurité et protection des données",w2:"Plus de ventes",w3:"Support technique 24/7",w4:"Service pro et fiable",w5:"Design moderne et unique",ct:"Contactez-nous",gt:"Nos réalisations",rt:"Avis de nos clients",rv:"avis",rn:"Votre nom",rc:"Écrivez votre avis...",rs:"Envoyer l'avis",rp:"Choisissez votre note",ft:"Demandez votre offre",fn:"Nom complet",fp:"Téléphone / WhatsApp",fe:"E-mail (facultatif)",fs:"Service souhaité",fb:"Budget",fm:"Moyen de contact préféré",fg:"Votre message",fc:"J'accepte d'être contacté à propos de ma demande",fx:"Envoyer via WhatsApp",er:"Veuillez vérifier les champs",ok:"Merci ! WhatsApp s'ouvre avec votre message",oo:"Autre",cc:"Appel",cm:"E-mail",rok:"Merci pour votre avis !",cT:"Assistant IA HD",cph:"Posez votre question...",cw:"Bonjour ! Je suis l'assistant IA, posez-moi n'importe quelle question 😊",cq1:"Quels sont vos services ?",cq2:"Combien coûte un site ?",cq3:"Comment commencer ?",cerr:"Assistant indisponible, écrivez-nous sur WhatsApp."},
-es:{n1:"Servicios",n2:"Oferta",n3:"Contacto",h1:"Sitio web profesional",h2:"para tu proyecto o tienda",h3:"Aumenta tus ventas",h4:"Llega a más clientes en Marruecos y fuera — contigo hacia el futuro digital",b1:"Contáctanos ahora",b2:"Ver oferta",st:"Nuestros servicios",s1:"Sitio web profesional",d1:"Diseño moderno adaptado a todos los dispositivos",s2:"Visibilidad en Google",d2:"Google Maps e IA (Gemini - ChatGPT)",s3:"Enlace directo a Google Maps",d3:"Para que te encuentren fácilmente",s4:"Contacto directo",d4:"por WhatsApp",s5:"Fotos profesionales",d5:"y contenido descriptivo de tus productos y servicios",ot:"Oferta exclusiva",oe:"OFERTA EXCLUSIVA",os:"Tu web es tu identidad digital: hazla única",wt:"¿Por qué nosotros?",w1:"Alta seguridad y protección de datos",w2:"Más ventas",w3:"Soporte técnico 24/7",w4:"Servicio profesional y fiable",w5:"Diseño moderno y único",ct:"Contáctanos",gt:"Nuestros trabajos",rt:"Opiniones de clientes",rv:"reseñas",rn:"Tu nombre",rc:"Escribe tu opinión...",rs:"Enviar reseña",rp:"Elige tu puntuación",ft:"Pide tu oferta ahora",fn:"Nombre completo",fp:"Teléfono / WhatsApp",fe:"Correo (opcional)",fs:"Servicio deseado",fb:"Presupuesto",fm:"Contacto preferido",fg:"Tu mensaje",fc:"Acepto que me contacten sobre mi solicitud",fx:"Enviar por WhatsApp",er:"Revisa los campos",ok:"¡Gracias! Se abre WhatsApp con tu mensaje",oo:"Otro",cc:"Llamada",cm:"Correo",rok:"¡Gracias por tu reseña!",cT:"Asistente IA HD",cph:"Escribe tu pregunta...",cw:"¡Hola! Soy el asistente IA, pregúntame lo que quieras 😊",cq1:"¿Qué servicios ofrecen?",cq2:"¿Cuánto cuesta una web?",cq3:"¿Cómo empiezo?",cerr:"Asistente no disponible, escríbenos por WhatsApp."},
-en:{n1:"Services",n2:"Offer",n3:"Contact",h1:"Professional website",h2:"for your business or store",h3:"Boost your sales",h4:"Reach more customers in Morocco and abroad — with you to the digital future",b1:"Contact us now",b2:"See the offer",st:"Our services",s1:"Professional website",d1:"Modern design for all devices",s2:"Google visibility",d2:"Google Maps and AI (Gemini - ChatGPT)",s3:"Direct Google Maps link",d3:"So you are easy to find",s4:"Direct contact",d4:"via WhatsApp",s5:"Professional photos",d5:"and intro content for your products and services",ot:"Exclusive offer",oe:"EXCLUSIVE OFFER",os:"Your website is your digital identity: make it stand out",wt:"Why choose us?",w1:"High security and data protection",w2:"More sales",w3:"24/7 technical support",w4:"Professional, reliable service",w5:"Modern, unique design",ct:"Get in touch",gt:"Our work",rt:"Customer reviews",rv:"reviews",rn:"Your name",rc:"Write your review...",rs:"Submit review",rp:"Choose your rating",ft:"Request your offer",fn:"Full name",fp:"Phone / WhatsApp",fe:"Email (optional)",fs:"Service needed",fb:"Budget",fm:"Preferred contact",fg:"Your message",fc:"I agree to be contacted about my request",fx:"Send via WhatsApp",er:"Please check the fields",ok:"Thanks! WhatsApp opens with your message",oo:"Other",cc:"Call",cm:"Email",rok:"Thanks for your review!",cT:"HD AI Assistant",cph:"Type your question...",cw:"Hi! I'm the AI assistant, ask me anything 😊",cq1:"What services do you offer?",cq2:"How much is a website?",cq3:"How do I start?",cerr:"Assistant unavailable, message us on WhatsApp."}};
+ar:{n1:"خدماتنا",n2:"العرض",n3:"اتصل بنا",h1:"موقع إلكتروني احترافي",h2:"لمشروعك أو متجرك",h3:"يزيد من مبيعاتك",h4:"لتصل إلى المزيد من العملاء في المغرب وخراجه — معك نحو المستقبل الرقمي",b1:"تواصل معنا الآن",b2:"اكتشف العرض",st:"خدماتنا",s1:"موقع إلكتروني احترافي",d1:"تصميم عصري ومتجاوب مع جميع الأجهزة",s2:"تحسين الظهور في Google",d2:"Google Maps والذكاء الاصطناعي (Gemini - ChatGPT)",s3:"ربط مباشر مع Google Maps",d3:"لإيجاد موقعك بسهولة",s4:"التواصل المباشر",d4:"عبر WhatsApp",s5:"إضافة صور احترافية",d5:"ومضامين تعريفية لمنتجاتك وخدماتك",ot:"عرض حصري",oe:"عرض حصري",os:"موقعك هو هويتك الرقمية فاجعله مميزًا",wt:"لماذا نحن؟",w1:"أمان عالي وحماية بياناتك",w2:"زيادة المبيعات",w3:"دعم فني طوال الوقت",w4:"خدمة مهنية وموثوقة",w5:"تصميم عصري وفريد",ct:"تواصل معنا",gt:"معرض أعمالنا",rt:"آراء عملائنا",rv:"تقييم",rn:"اسمك",rc:"اكتب رأيك...",rs:"أرسل التقييم",rp:"اختر تقييمك",ft:"اطلب عرضك الآن",fn:"الاسم الكامل",fp:"الهاتف / WhatsApp",fe:"البريد الإلكتروني (اختياري)",fs:"الخدمة المطلوبة",fb:"الميزانية",fm:"طريقة التواصل المفضلة",fg:"رسالتك",fc:"أوافق على التواصل معي بخصوص طلبي",fx:"إرسال عبر WhatsApp",er:"يرجى التحقق من الحقول",ok:"شكرًا! تم فتح WhatsApp برسالتك",oo:"أخرى",cc:"اتصال",cm:"بريد",rok:"شكرًا على تقييمك!",cT:"مساعد HD الذكي",cph:"اكتب سؤالك...",cw:"مرحبًا! أنا المساعد الذكي، اسألني عن أي شيء 😊",cq1:"ما هي خدماتكم؟",cq2:"كم سعر الموقع؟",cq3:"كيف أبدأ؟",cerr:"المساعد غير متاح حاليًا، راسلنا عبر WhatsApp.",rall:"الكل",rnew:"الأحدث",rhi:"الأعلى تقييمًا",rhelp:"مفيد"},
+fr:{n1:"Services",n2:"Offre",n3:"Contact",h1:"Site web professionnel",h2:"pour votre projet ou boutique",h3:"Boostez vos ventes",h4:"Touchez plus de clients au Maroc et à l'étranger — avec vous vers l'avenir digital",b1:"Contactez-nous",b2:"Voir l'offre",st:"Nos services",s1:"Site web professionnel",d1:"Design moderne, adapté à tous les appareils",s2:"Visibilité sur Google",d2:"Google Maps et IA (Gemini - ChatGPT)",s3:"Lien direct Google Maps",d3:"Pour être trouvé facilement",s4:"Contact direct",d4:"via WhatsApp",s5:"Photos professionnelles",d5:"et contenus de présentation de vos produits",ot:"Offre exclusive",oe:"OFFRE EXCLUSIVE",os:"Votre site est votre identité digitale : rendez-la unique",wt:"Pourquoi nous ?",w1:"Haute sécurité et protection des données",w2:"Plus de ventes",w3:"Support technique 24/7",w4:"Service pro et fiable",w5:"Design moderne et unique",ct:"Contactez-nous",gt:"Nos réalisations",rt:"Avis de nos clients",rv:"avis",rn:"Votre nom",rc:"Écrivez votre avis...",rs:"Envoyer l'avis",rp:"Choisissez votre note",ft:"Demandez votre offre",fn:"Nom complet",fp:"Téléphone / WhatsApp",fe:"E-mail (facultatif)",fs:"Service souhaité",fb:"Budget",fm:"Moyen de contact préféré",fg:"Votre message",fc:"J'accepte d'être contacté à propos de ma demande",fx:"Envoyer via WhatsApp",er:"Veuillez vérifier les champs",ok:"Merci ! WhatsApp s'ouvre avec votre message",oo:"Autre",cc:"Appel",cm:"E-mail",rok:"Merci pour votre avis !",cT:"Assistant IA HD",cph:"Posez votre question...",cw:"Bonjour ! Je suis l'assistant IA, posez-moi n'importe quelle question 😊",cq1:"Quels sont vos services ?",cq2:"Combien coûte un site ?",cq3:"Comment commencer ?",cerr:"Assistant indisponible, écrivez-nous sur WhatsApp.",rall:"Tous",rnew:"Récents",rhi:"Mieux notés",rhelp:"Utile"},
+es:{n1:"Servicios",n2:"Oferta",n3:"Contacto",h1:"Sitio web profesional",h2:"para tu proyecto o tienda",h3:"Aumenta tus ventas",h4:"Llega a más clientes en Marruecos y fuera — contigo hacia el futuro digital",b1:"Contáctanos ahora",b2:"Ver oferta",st:"Nuestros servicios",s1:"Sitio web profesional",d1:"Diseño moderno adaptado a todos los dispositivos",s2:"Visibilidad en Google",d2:"Google Maps e IA (Gemini - ChatGPT)",s3:"Enlace directo a Google Maps",d3:"Para que te encuentren fácilmente",s4:"Contacto directo",d4:"por WhatsApp",s5:"Fotos profesionales",d5:"y contenido descriptivo de tus productos y servicios",ot:"Oferta exclusiva",oe:"OFERTA EXCLUSIVA",os:"Tu web es tu identidad digital: hazla única",wt:"¿Por qué nosotros?",w1:"Alta seguridad y protección de datos",w2:"Más ventas",w3:"Soporte técnico 24/7",w4:"Servicio profesional y fiable",w5:"Diseño moderno y único",ct:"Contáctanos",gt:"Nuestros trabajos",rt:"Opiniones de clientes",rv:"reseñas",rn:"Tu nombre",rc:"Escribe tu opinión...",rs:"Enviar reseña",rp:"Elige tu puntuación",ft:"Pide tu oferta ahora",fn:"Nombre completo",fp:"Teléfono / WhatsApp",fe:"Correo (opcional)",fs:"Servicio deseado",fb:"Presupuesto",fm:"Contacto preferido",fg:"Tu mensaje",fc:"Acepto que me contacten sobre mi solicitud",fx:"Enviar por WhatsApp",er:"Revisa los campos",ok:"¡Gracias! Se abre WhatsApp con tu mensaje",oo:"Otro",cc:"Llamada",cm:"Correo",rok:"¡Gracias por tu reseña!",cT:"Asistente IA HD",cph:"Escribe tu pregunta...",cw:"¡Hola! Soy el asistente IA, pregúntame lo que quieras 😊",cq1:"¿Qué servicios ofrecen?",cq2:"¿Cuánto cuesta una web?",cq3:"¿Cómo empiezo?",cerr:"Asistente no disponible, escríbenos por WhatsApp.",rall:"Todas",rnew:"Recientes",rhi:"Mejor valoradas",rhelp:"Útil"},
+en:{n1:"Services",n2:"Offer",n3:"Contact",h1:"Professional website",h2:"for your business or store",h3:"Boost your sales",h4:"Reach more customers in Morocco and abroad — with you to the digital future",b1:"Contact us now",b2:"See the offer",st:"Our services",s1:"Professional website",d1:"Modern design for all devices",s2:"Google visibility",d2:"Google Maps and AI (Gemini - ChatGPT)",s3:"Direct Google Maps link",d3:"So you are easy to find",s4:"Direct contact",d4:"via WhatsApp",s5:"Professional photos",d5:"and intro content for your products and services",ot:"Exclusive offer",oe:"EXCLUSIVE OFFER",os:"Your website is your digital identity: make it stand out",wt:"Why choose us?",w1:"High security and data protection",w2:"More sales",w3:"24/7 technical support",w4:"Professional, reliable service",w5:"Modern, unique design",ct:"Get in touch",gt:"Our work",rt:"Customer reviews",rv:"reviews",rn:"Your name",rc:"Write your review...",rs:"Submit review",rp:"Choose your rating",ft:"Request your offer",fn:"Full name",fp:"Phone / WhatsApp",fe:"Email (optional)",fs:"Service needed",fb:"Budget",fm:"Preferred contact",fg:"Your message",fc:"I agree to be contacted about my request",fx:"Send via WhatsApp",er:"Please check the fields",ok:"Thanks! WhatsApp opens with your message",oo:"Other",cc:"Call",cm:"Email",rok:"Thanks for your review!",cT:"HD AI Assistant",cph:"Type your question...",cw:"Hi! I'm the AI assistant, ask me anything 😊",cq1:"What services do you offer?",cq2:"How much is a website?",cq3:"How do I start?",cerr:"Assistant unavailable, message us on WhatsApp.",rall:"All",rnew:"Newest",rhi:"Top rated",rhelp:"Helpful"}};
 function setLang(l){
  document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';
  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=T[l][e.dataset.i]);
  document.querySelectorAll('[data-p]').forEach(e=>e.placeholder=T[l][e.dataset.p]);
  window.CL=l;
+ if(window.onLang)window.onLang();
  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
  try{localStorage.setItem('lang',l)}catch(e){}
 }
@@ -300,12 +329,10 @@ let sl='ar';try{sl=localStorage.getItem('lang')||'ar'}catch(e){}
 setLang(T[sl]?sl:'ar');
 // 3D tilt
 document.querySelectorAll('.tilt').forEach(c=>{
- c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg) scale(1.04)`});
+ c.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`});
  c.addEventListener('pointerleave',()=>c.style.transform='');
 });
 // hero parallax
-const st=document.getElementById('stage');
-addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;st.style.transform=`rotateY(${x*20}deg) rotateX(${-y*14}deg)`});
 // reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.rv').forEach(e=>io.observe(e));
@@ -331,33 +358,58 @@ f.addEventListener('submit',e=>{e.preventDefault();let ok=true;
  toast(L().ok);f.reset();prog()});
 // ---- reviews
 // SAMPLE: ejemplos de muestra. Reemplázalos por reseñas reales de tus clientes.
-const SAMPLE=[{n:"Youssef M.",s:5,c:"خدمة ممتازة وموقع احترافي بتصميم رائع، زادت طلبات الزبناء بشكل ملحوظ."},{n:"Salma A.",s:5,c:"Très pro, site rapide et bien référencé sur Google Maps."},{n:"Karim B.",s:4,c:"Excelente soporte y entrega a tiempo. Muy recomendable."}];
-let mine=[];try{mine=JSON.parse(localStorage.getItem('hdreviews')||'[]')}catch(e){}
-let rate=0;const sb=[...document.querySelectorAll('#sin button')];
+const SAMPLE=[
+{n:"Youssef M.",s:5,t:"s1",d:"2026-09-12",c:"خدمة ممتازة وموقع احترافي بتصميم رائع، زادت طلبات الزبناء بشكل ملحوظ.",h:12},
+{n:"Salma A.",s:5,t:"s2",d:"2026-09-03",c:"Très pro, site rapide et bien référencé sur Google Maps. Je recommande !",h:9},
+{n:"Karim B.",s:4,t:"s1",d:"2026-08-24",c:"Excelente soporte y entrega a tiempo. Muy recomendable.",h:5},
+{n:"Nadia R.",s:5,t:"s4",d:"2026-08-15",c:"الربط مع WhatsApp سهّل التواصل مع الزبائن، وأصبح الطلب أسرع بكثير.",h:7},
+{n:"Omar E.",s:4,t:"s3",d:"2026-07-30",c:"Great design and my location now shows up easily on Google Maps.",h:4},
+{n:"Imane T.",s:5,t:"s5",d:"2026-07-18",c:"Photos professionnelles et contenu clair pour mes produits. Résultat au top.",h:6}];
+let mine=[],hs=[];try{mine=JSON.parse(localStorage.getItem('hdreviews')||'[]');hs=JSON.parse(localStorage.getItem('hdhelp')||'[]')}catch(e){}
+let rate=0,flt=0,srt='new';const sb=[...document.querySelectorAll('#sin button')];
 function paint(n){sb.forEach((b,i)=>b.classList.toggle('on',i<n))}
 sb.forEach((b,i)=>{b.onclick=()=>{rate=i+1;paint(rate)};b.onmouseenter=()=>paint(i+1);b.onmouseleave=()=>paint(rate)});
+const LC={ar:'ar-MA',fr:'fr-FR',es:'es-ES',en:'en-GB'},key=r=>r.n+r.d+r.c.slice(0,8);
 function render(){
  const all=[...mine,...SAMPLE],n=all.length,avg=all.reduce((a,r)=>a+r.s,0)/n;
  $('avg').textContent=avg.toFixed(1);$('avgs').textContent='★'.repeat(Math.round(avg))+'☆'.repeat(5-Math.round(avg));$('cnt').textContent=n;
  $('dist').innerHTML=[5,4,3,2,1].map(s=>{const c=all.filter(r=>r.s===s).length;return `<div>${s}★<span class="b"><i style="width:${c/n*100}%"></i></span>${c}</div>`}).join('');
+ const list=all.filter(r=>!flt||r.s===flt).sort(srt==='hi'?(a,b)=>b.s-a.s||b.d.localeCompare(a.d):(a,b)=>b.d.localeCompare(a.d));
  const box=$('rlist');box.innerHTML='';
- all.forEach(r=>{const d=document.createElement('div');d.className='card rc';
-  d.innerHTML='<div class="who"><div class="av"></div><div><b class="nm"></b><div class="stars"></div></div></div><p></p>';
+ list.forEach(r=>{const d=document.createElement('div');d.className='card rc';
+  d.innerHTML='<div class="who"><div class="av"></div><div><b class="nm"></b><div class="stars"></div></div></div><div class="rmeta"></div><p></p><button type="button" class="hp"></button>';
   d.querySelector('.av').textContent=r.n.charAt(0).toUpperCase();d.querySelector('.nm').textContent=r.n;
-  d.querySelector('.stars').textContent='★'.repeat(r.s)+'☆'.repeat(5-r.s);d.querySelector('p').textContent=r.c;
-  d.addEventListener('pointermove',e=>{const b=d.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;d.style.transform=`rotateY(${x*16}deg) rotateX(${-y*16}deg) scale(1.03)`});
+  d.querySelector('.stars').textContent='★'.repeat(r.s)+'☆'.repeat(5-r.s);
+  let ds='';try{ds=new Date(r.d).toLocaleDateString(LC[window.CL||'ar'])}catch(e){}
+  d.querySelector('.rmeta').textContent=ds+(r.t?' · '+L()[r.t]:'');
+  d.querySelector('p').textContent=r.c;
+  const k=key(r),on=hs.includes(k),hp=d.querySelector('.hp');hp.classList.toggle('on',on);
+  hp.textContent='👍 '+L().rhelp+' · '+((r.h||0)+(on?1:0));
+  hp.onclick=()=>{hs=on?hs.filter(x=>x!==k):[...hs,k];try{localStorage.setItem('hdhelp',JSON.stringify(hs))}catch(e){}render()};
+  d.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const q=d.getBoundingClientRect(),x=(e.clientX-q.left)/q.width-.5,y=(e.clientY-q.top)/q.height-.5;d.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`});
   d.addEventListener('pointerleave',()=>d.style.transform='');box.appendChild(d)})}
+document.querySelectorAll('#rf button').forEach(b=>b.onclick=()=>{flt=+b.dataset.f;document.querySelectorAll('#rf button').forEach(x=>x.classList.toggle('on',x===b));render()});
+$('rsort').onchange=e=>{srt=e.target.value;render()};
 $('rsend').onclick=()=>{const n=$('rname').value.trim(),c=$('rtxt').value.trim();
  if(!rate||n.length<2||c.length<5){$('rerr').textContent=L().er;return}
- $('rerr').textContent='';mine.unshift({n,s:rate,c});try{localStorage.setItem('hdreviews',JSON.stringify(mine))}catch(e){}
+ $('rerr').textContent='';mine.unshift({n,s:rate,c,t:'',d:new Date().toISOString().slice(0,10),h:0});try{localStorage.setItem('hdreviews',JSON.stringify(mine))}catch(e){}
  $('rname').value='';$('rtxt').value='';rate=0;paint(0);render();toast(L().rok)};
+window.onLang=render;
 render();
 })();
 
 (function(){
 const $=id=>document.getElementById(id),L=()=>T[window.CL||'ar'];
 const INSTR="You are the AI assistant on the website of HerioMarketingDigital360 Maroc (HD), a Moroccan digital marketing agency (WhatsApp/phone +212 681 977 969, website herioai.com). Services: professional responsive websites (exclusive offer 1299 DH), visibility on Google, Google Maps and AI assistants, direct Google Maps link, WhatsApp contact integration, professional photos and product/service content. Strengths: high security, more sales, 24/7 technical support, professional reliable service, modern unique design. Answer ANY question the visitor asks helpfully and accurately, on any topic; when relevant, connect it to the agency's services and invite them to contact via WhatsApp. Never invent prices, deadlines or guarantees beyond those listed; say the team will confirm. Reply in the language the visitor writes in. Plain text only, no markdown, short answers.";
-const h=[];let busy=false,sm=null;
+const h=[];let busy=false;const smP=(window.claude&&claude.use)?claude.use('sample').catch(()=>null):Promise.resolve(null);
+
+const F={
+ar:{price:"عرضنا الحصري لإنشاء موقع احترافي هو 1299 درهم. للتفاصيل راسلنا عبر WhatsApp: +212 681 977 969",services:"نقدم: موقع احترافي متجاوب، تحسين الظهور في Google وGoogle Maps والذكاء الاصطناعي، ربط Google Maps، التواصل عبر WhatsApp، وصور ومحتوى لمنتجاتك.",start:"املأ نموذج الطلب في الصفحة أو راسلنا عبر WhatsApp على +212 681 977 969 وسنرتب معك كل شيء.",contact:"WhatsApp / هاتف: +212 681 977 969 — الموقع: herioai.com",maps:"نحسّن ظهورك في Google وGoogle Maps وأدوات الذكاء الاصطناعي، ونربط موقعك بخرائط Google ليجدك العملاء بسهولة.",support:"نوفر أمانًا عاليًا وحماية لبياناتك، ودعمًا فنيًا طوال الوقت، وخدمة مهنية وموثوقة.",def:"للإجابة الدقيقة على سؤالك تواصل مع فريقنا عبر WhatsApp: +212 681 977 969"},
+fr:{price:"Notre offre exclusive pour un site professionnel est de 1299 DH. Détails sur WhatsApp : +212 681 977 969",services:"Nous proposons : site pro responsive, visibilité sur Google, Google Maps et IA, lien Google Maps, contact WhatsApp, photos et contenus pour vos produits.",start:"Remplissez le formulaire de la page ou écrivez-nous sur WhatsApp au +212 681 977 969, on s'occupe du reste.",contact:"WhatsApp / tél : +212 681 977 969 — site : herioai.com",maps:"Nous améliorons votre visibilité sur Google, Google Maps et les assistants IA, et relions votre site à Google Maps.",support:"Haute sécurité, protection de vos données, support technique permanent et service professionnel.",def:"Pour une réponse précise, contactez notre équipe sur WhatsApp : +212 681 977 969"},
+es:{price:"Nuestra oferta exclusiva para una web profesional es de 1299 DH. Detalles por WhatsApp: +212 681 977 969",services:"Ofrecemos: web profesional responsive, visibilidad en Google, Google Maps e IA, enlace a Google Maps, contacto por WhatsApp, fotos y contenido para tus productos.",start:"Rellena el formulario de la página o escríbenos por WhatsApp al +212 681 977 969 y nos encargamos de todo.",contact:"WhatsApp / teléfono: +212 681 977 969 — web: herioai.com",maps:"Mejoramos tu visibilidad en Google, Google Maps y asistentes de IA, y enlazamos tu web con Google Maps.",support:"Alta seguridad, protección de tus datos, soporte técnico permanente y servicio profesional.",def:"Para una respuesta precisa, contacta a nuestro equipo por WhatsApp: +212 681 977 969"},
+en:{price:"Our exclusive offer for a professional website is 1299 DH. Details on WhatsApp: +212 681 977 969",services:"We offer: professional responsive website, visibility on Google, Google Maps and AI, Google Maps link, WhatsApp contact, photos and content for your products.",start:"Fill in the form on this page or message us on WhatsApp at +212 681 977 969 and we'll handle the rest.",contact:"WhatsApp / phone: +212 681 977 969 — website: herioai.com",maps:"We improve your visibility on Google, Google Maps and AI assistants, and link your site to Google Maps.",support:"High security, data protection, round-the-clock technical support and professional service.",def:"For a precise answer, contact our team on WhatsApp: +212 681 977 969"}};
+const K={price:/سعر|ثمن|تكلف|بكم|prix|co[uû]t|tarif|precio|cu[aá]nto|cuesta|price|cost|1299/i,start:/ابدأ|أبدأ|بدء|commenc|d[eé]marr|empez|empiez|start|begin/i,contact:/اتصل|تواصل|رقم|هاتف|contact|t[eé]l|num[eé]ro|whatsapp|phone|llamar|n[uú]mero/i,maps:/google|maps|seo|ظهور|référenc|visib|ranking/i,support:/دعم|أمان|امان|support|s[eé]curit|seguridad|security|soporte/i,services:/خدم|service|servicio|what do you|que font|qué ofrec|offer|عرض/i};
+function faq(q){const f=F[window.CL||'ar']||F.ar;for(const k in K)if(K[k].test(q))return f[k];return f.def}
 const box=$('chat'),ms=$('cms');
 $('aib').onclick=()=>{box.classList.toggle('o');if(box.classList.contains('o'))$('ci').focus()};
 $('cx').onclick=()=>box.classList.remove('o');
@@ -367,12 +419,12 @@ async function send(q){
  const chips=ms.querySelector('.chips');if(chips)chips.remove();
  add('u',q);h.push({role:'user',content:q});const b=add('a','…');
  try{
-  if(!sm)sm=(window.claude&&claude.use)?await claude.use('sample'):null;
-  if(!sm)throw{code:'na'};
-  const m=h.slice(-9).map(x=>({...x}));m[0].content=INSTR+"\n\nVisitor: "+m[0].content;
-  const r=await sm(m,{cache:false,modelTier:'quick',onText:({text})=>{b.textContent=text;ms.scrollTop=ms.scrollHeight}});
-  b.textContent=r.text;h.push({role:'assistant',content:r.text});
- }catch(e){h.pop();b.textContent=(e&&e.code==='rate_limited')?'⏳ …':L().cerr}
+  const sm=await smP;
+  if(!sm){b.textContent=faq(q);h.push({role:'assistant',content:b.textContent})}
+  else{const m=h.slice(-9).map(x=>({...x}));m[0].content=INSTR+"\n\nVisitor: "+m[0].content;
+   const r=await sm(m,{cache:false,modelTier:'quick',onText:({text})=>{b.textContent=text;ms.scrollTop=ms.scrollHeight}});
+   b.textContent=r.text;h.push({role:'assistant',content:r.text})}
+ }catch(e){h.pop();b.textContent=faq(q)}
  busy=false;$('cs').disabled=false;
 }
 $('cs').onclick=()=>send($('ci').value);
